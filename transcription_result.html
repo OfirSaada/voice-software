@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>תמלול גיחה</title>
+<style>
+ body { font-family: 'Segoe UI', Tahoma, sans-serif; background:#f0f4f8; margin:0; padding:20px; color:#333; }
+ .wrapper { max-width:900px; margin:0 auto; }
+ .player-panel { position:sticky; top:20px; background:#2c3e50; color:#fff; padding:20px; border-radius:12px; margin-bottom:25px; z-index:100; }
+ .player-panel h2 { margin:0 0 15px; font-size:1.4rem; }
+ .legend span { margin-left:14px; font-size:.9rem; }
+ audio { width:100%; }
+ video { width:100%; max-height:38vh; background:#000; border-radius:8px; }
+ .review { background:#fff3cd; color:#7a5b00; padding:10px 14px; border-radius:8px; margin-bottom:15px; }
+ .transcript-container { background:#fff; padding:30px; border-radius:12px; }
+ .segment-block { padding:15px; margin-bottom:15px; border-radius:8px; border-right:4px solid #bdc3c7; background:#fdfdfd; cursor:pointer; transition:all .3s; }
+ .segment-block:hover { background:#f5f7fa; }
+ .segment-block.active { border-right-color:#2ecc71 !important; background:#e8f8f0 !important; }
+ .meta-info { display:flex; justify-content:space-between; font-size:.85rem; color:#7f8c8d; margin-bottom:8px; font-weight:bold; }
+ .speaker-1 { border-right-color:#3498db; } .speaker-1 .speaker-name { color:#3498db; }
+ .speaker-2 { border-right-color:#9b59b6; } .speaker-2 .speaker-name { color:#9b59b6; }
+ .instructor { border-right-color:#e74c3c; background:#fdf2f2; } .instructor .speaker-name { color:#e74c3c; }
+ .sim-noise { border-right-color:#7f8c8d; background:#f2f4f4; } .sim-noise .speaker-name { color:#7f8c8d; font-style:italic; }
+ .text-content { font-size:1.15rem; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+ <div class="player-panel">
+  <h2>נגן קשר טיסה ✈️</h2>
+  <div class="legend"><span style="color:#5dade2">■ חניך</span><span style="color:#ec7063">■ מדריכה</span><span style="color:#bb8fce">■ ממיין</span></div>
+  <video id="audioPlayer" controls><source src="file:///E:/סרטים - הקלטות מסך/צ'ק 6 11.6 טבלן וכרמל סרטון.mp4" type="video/mp4"></video>
+ </div>
+ 
+ <div class="transcript-container"><div id="timeline">
+
+  <div class="segment-block speaker-1" id="seg-0" data-start="10.08" data-end="10.28" onclick="seekTo(10.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>00:10</span></div>
+   <div class="text-content">תודה רבה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-1" data-start="30.55" data-end="31.86" onclick="seekTo(30.55)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>00:30</span></div>
+   <div class="text-content">איך אני מדליק את הטיימר?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-2" data-start="32.96" data-end="34.32" onclick="seekTo(32.96)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>00:32</span></div>
+   <div class="text-content">אני אתעסק בזה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-3" data-start="35.32" data-end="36.46" onclick="seekTo(35.32)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>00:35</span></div>
+   <div class="text-content">בסדר? כן</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-4" data-start="37.88" data-end="38.54" onclick="seekTo(37.88)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>00:37</span></div>
+   <div class="text-content">אחלה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-5" data-start="61.980000000000004" data-end="62.98" onclick="seekTo(61.980000000000004)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>01:01</span></div>
+   <div class="text-content">שומעת עליה?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-6" data-start="64.94" data-end="65.38" onclick="seekTo(64.94)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>01:04</span></div>
+   <div class="text-content">כן</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-7" data-start="66.68" data-end="68.36" onclick="seekTo(66.68)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>01:06</span></div>
+   <div class="text-content">נראה לי שאנחנו יכולים להתחיל</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-8" data-start="98.16" data-end="99.56" onclick="seekTo(98.16)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>01:38</span></div>
+   <div class="text-content">בבקשה.</div>
+  </div>
+  <div class="segment-block instructor" id="seg-9" data-start="143.64" data-end="145.7" onclick="seekTo(143.64)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>02:23</span></div>
+   <div class="text-content">רק שנייה, אני צריכה לסדר משהו ונתחיל.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-10" data-start="171.12" data-end="179.24" onclick="seekTo(171.12)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>02:51</span></div>
+   <div class="text-content">אדוני היושב-ראש, חברי הכנסת,</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-11" data-start="190.64" data-end="204.48" onclick="seekTo(190.64)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>03:10</span></div>
+   <div class="text-content">חבר הכנסת מיכאלי, בבקשה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-12" data-start="209.84" data-end="211.56" onclick="seekTo(209.84)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>03:29</span></div>
+   <div class="text-content">תרחיק אותם, שיהיה לך נוח.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-13" data-start="213.12" data-end="213.76" onclick="seekTo(213.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>03:33</span></div>
+   <div class="text-content">כן?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-14" data-start="215.28" data-end="215.6" onclick="seekTo(215.28)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>03:35</span></div>
+   <div class="text-content">נוח לך?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-15" data-start="215.88" data-end="216.1" onclick="seekTo(215.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>03:35</span></div>
+   <div class="text-content">כן.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-16" data-start="216.74" data-end="217.94" onclick="seekTo(216.74)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>03:36</span></div>
+   <div class="text-content">אוקיי אפשר להתחיל?</div>
+  </div>
+  <div class="segment-block instructor" id="seg-17" data-start="224.82" data-end="230.28" onclick="seekTo(224.82)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>03:44</span></div>
+   <div class="text-content">יש פה רגע אצלנו בעיה עם הרמקול ואני רוצה שהיא תיסדר לפני שנתחיל אז יקחו דקה</div>
+  </div>
+  <div class="segment-block instructor" id="seg-18" data-start="231.66000000000003" data-end="233.38" onclick="seekTo(231.66000000000003)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>03:51</span></div>
+   <div class="text-content">סליחה אני עוד רגע</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-19" data-start="233.98000000000002" data-end="235.28" onclick="seekTo(233.98000000000002)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>03:53</span></div>
+   <div class="text-content">כאילו לא שומעים אותנו טוב?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-20" data-start="237.36" data-end="239.18" onclick="seekTo(237.36)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>03:57</span></div>
+   <div class="text-content">אוקיי, בסדר.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-21" data-start="274.22" data-end="274.34" onclick="seekTo(274.22)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>04:34</span></div>
+   <div class="text-content">תודה רבה.</div>
+  </div>
+  <div class="segment-block instructor" id="seg-22" data-start="296.8" data-end="298.44" onclick="seekTo(296.8)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>04:56</span></div>
+   <div class="text-content">יכולים לנסות לדבר רגע?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-23" data-start="298.68" data-end="300.12" onclick="seekTo(298.68)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>04:58</span></div>
+   <div class="text-content">כן. שומעת אותנו?</div>
+  </div>
+  <div class="segment-block instructor" id="seg-24" data-start="302.40999999999997" data-end="306.58" onclick="seekTo(302.40999999999997)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>05:02</span></div>
+   <div class="text-content">אחת-אחת אין מול אפשר להתחיל בה אז</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-25" data-start="306.58" data-end="311.14" onclick="seekTo(306.58)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>05:06</span></div>
+   <div class="text-content">התחלנו בזה הרגע, את יכולה לשחרר אותך משחררת</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-26" data-start="311.14" data-end="312.84" onclick="seekTo(311.14)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>05:11</span></div>
+   <div class="text-content">אוקיי,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-27" data-start="312.96" data-end="317.72" onclick="seekTo(312.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:12</span></div>
+   <div class="text-content">תגובה 1,500 מתיישר רוצח ראובקית</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-28" data-start="317.72" data-end="325.78" onclick="seekTo(317.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:17</span></div>
+   <div class="text-content">תגובה 1,590 מתקרב לשדה דימנט</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-29" data-start="326.36" data-end="327.48" onclick="seekTo(326.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:26</span></div>
+   <div class="text-content">מכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-30" data-start="328.52000000000004" data-end="330.4" onclick="seekTo(328.52000000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:28</span></div>
+   <div class="text-content">מהירות יורדת מועידה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-31" data-start="330.82" data-end="332.04" onclick="seekTo(330.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:30</span></div>
+   <div class="text-content">נוכל לדווח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-32" data-start="335.82" data-end="336.96" onclick="seekTo(335.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:35</span></div>
+   <div class="text-content">מהירות עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-33" data-start="337.72" data-end="339.08" onclick="seekTo(337.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:37</span></div>
+   <div class="text-content">ומתקרב לשדה דימן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-34" data-start="341.14" data-end="344.88" onclick="seekTo(341.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:41</span></div>
+   <div class="text-content">שרלוק מתקרב לשדה דימאן, 1,500. 2,0.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-35" data-start="344.92" data-end="346.04" onclick="seekTo(344.92)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>05:44</span></div>
+   <div class="text-content">איזו גובה?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-36" data-start="346.28" data-end="347.98" onclick="seekTo(346.28)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:46</span></div>
+   <div class="text-content">2,0.</div>
+  </div>
+  <div class="segment-block instructor" id="seg-37" data-start="348.68" data-end="352.66" onclick="seekTo(348.68)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>05:48</span></div>
+   <div class="text-content">שרלוק קיבלתי המשך גובה 1,500 לישן מדווח לכניסה לאזור</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-38" data-start="354.5" data-end="358.44" onclick="seekTo(354.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>05:54</span></div>
+   <div class="text-content">ממשיך גובה 1,500 לישן לדווח כניסה לאזור שרלוק</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-39" data-start="360.21999999999997" data-end="360.64" onclick="seekTo(360.21999999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:00</span></div>
+   <div class="text-content">מטמין</div>
+  </div>
+  <div class="segment-block instructor" id="seg-40" data-start="361.94" data-end="363.26" onclick="seekTo(361.94)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>06:01</span></div>
+   <div class="text-content">קדם ביסלי</div>
+  </div>
+  <div class="segment-block instructor" id="seg-41" data-start="363.8" data-end="367.62" onclick="seekTo(363.8)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>06:03</span></div>
+   <div class="text-content">קדם מכובד מתקרב לישן מגילת גובה 1,500 עוזב מזרחה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-42" data-start="369.46" data-end="373.38" onclick="seekTo(369.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:09</span></div>
+   <div class="text-content">שרלוק, האם היא יכולה להכווין את המטוס לגובה אחר?</div>
+  </div>
+  <div class="segment-block instructor" id="seg-43" data-start="376.46" data-end="379.74" onclick="seekTo(376.46)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>06:16</span></div>
+   <div class="text-content">שרלוק, תממסר לי בבקשה את מחובל. אני לא מקבלת אותו.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-44" data-start="381.98" data-end="384.12" onclick="seekTo(381.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:21</span></div>
+   <div class="text-content">קיבלתי שרלוק ממסר את מחובל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-45" data-start="386.42" data-end="390.4" onclick="seekTo(386.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:26</span></div>
+   <div class="text-content">ומשיך להנמיך הכוח הוכניס לכיוון אשל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-46" data-start="392.90000000000003" data-end="394.48" onclick="seekTo(392.90000000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:32</span></div>
+   <div class="text-content">שרלוק לא מקבל את מחובל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-47" data-start="395.14000000000004" data-end="396.08" onclick="seekTo(395.14000000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:35</span></div>
+   <div class="text-content">רואה את מחובל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-48" data-start="396.08" data-end="399.76" onclick="seekTo(396.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:36</span></div>
+   <div class="text-content">מזהה אותו, הממשיך גובה 1,500 ל-10.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-49" data-start="405.91999999999996" data-end="408.04" onclick="seekTo(405.91999999999996)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:45</span></div>
+   <div class="text-content">מכוונים דלק 402 תקין</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-50" data-start="413.06000000000006" data-end="415.66" onclick="seekTo(413.06000000000006)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>06:53</span></div>
+   <div class="text-content">שרלוק רואה את מחובל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-51" data-start="426.08" data-end="426.96" onclick="seekTo(426.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:06</span></div>
+   <div class="text-content">שרלוק, מה מקבל אותי?</div>
+  </div>
+  <div class="segment-block instructor" id="seg-52" data-start="431.28" data-end="434.32" onclick="seekTo(431.28)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>07:11</span></div>
+   <div class="text-content">שרווק תנועה נגדית. הנמיך תכליתי ל-1,200 לאשל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-53" data-start="435.46" data-end="436.97999999999996" onclick="seekTo(435.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:15</span></div>
+   <div class="text-content">מנמיך 1,200 לאשל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-54" data-start="456.08" data-end="457.16" onclick="seekTo(456.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:36</span></div>
+   <div class="text-content">נכנסת לאזור ב&#x27;</div>
+  </div>
+  <div class="segment-block instructor" id="seg-55" data-start="458.82" data-end="461.74" onclick="seekTo(458.82)">
+   <div class="meta-info"><span class="speaker-name">מדריכה</span><span>07:38</span></div>
+   <div class="text-content">אפשר קיבלתי רשאי להיכנס לאזור ב&#x27;, שומר מרבי 20.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-56" data-start="462.24" data-end="469.78" onclick="seekTo(462.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:42</span></div>
+   <div class="text-content">נכנסת לאזור ב&#x27;, שומר מרבי 20. אוקיי, פונה שמאלה יש כאן אנטנות דרך טיפרח לכיוון הברכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-57" data-start="470.68" data-end="473.96" onclick="seekTo(470.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:50</span></div>
+   <div class="text-content">מעבר משולים עם מגבלות רוח 3-0</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-58" data-start="475.22" data-end="476.44" onclick="seekTo(475.22)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:55</span></div>
+   <div class="text-content">מועצות ת׳ מהירות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-59" data-start="476.44" data-end="477.66" onclick="seekTo(476.44)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>07:56</span></div>
+   <div class="text-content">נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-60" data-start="482.58" data-end="483.28" onclick="seekTo(482.58)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:02</span></div>
+   <div class="text-content">מקזז,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-61" data-start="483.76" data-end="496.9" onclick="seekTo(483.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:03</span></div>
+   <div class="text-content">אפנה בפס של טיפאח פירוט ואון וזהו יש גובה 1200. מזהה את הבריכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-62" data-start="496.9" data-end="498.56" onclick="seekTo(496.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:16</span></div>
+   <div class="text-content">ואת הציר שעליו אני אעשה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-63" data-start="501.56" data-end="507.44" onclick="seekTo(501.56)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:21</span></div>
+   <div class="text-content">אוקיי, מבחינת גבולות בגבול דרומי יש את הכביש שמגדיר את המרחק כגבול.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-64" data-start="507.98" data-end="513.0" onclick="seekTo(507.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:27</span></div>
+   <div class="text-content">יש במרחק במארב קווי מתח זה הגבול המערבי שלי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-65" data-start="513.64" data-end="515.36" onclick="seekTo(513.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:33</span></div>
+   <div class="text-content">בצפון יש את כביש המושבים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-66" data-start="515.98" data-end="517.96" onclick="seekTo(515.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:35</span></div>
+   <div class="text-content">ממזרח יש את הכביש</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-67" data-start="518.2199999999999" data-end="518.66" onclick="seekTo(518.2199999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:38</span></div>
+   <div class="text-content">רעד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-68" data-start="522.4" data-end="523.2" onclick="seekTo(522.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:42</span></div>
+   <div class="text-content">עוגן חזק</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-69" data-start="525.1800000000001" data-end="531.46" onclick="seekTo(525.1800000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:45</span></div>
+   <div class="text-content">190, גובה 1100. מתיישר, ישאר אופקית</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-70" data-start="533.49" data-end="534.56" onclick="seekTo(533.49)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:53</span></div>
+   <div class="text-content">עורב את הציר,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-71" data-start="534.8" data-end="537.38" onclick="seekTo(534.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:54</span></div>
+   <div class="text-content">מעצבנים ארבע דקות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-72" data-start="538.49" data-end="540.16" onclick="seekTo(538.49)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>08:58</span></div>
+   <div class="text-content">צריך להתיישר לציר כבר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-73" data-start="542.51" data-end="543.54" onclick="seekTo(542.51)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:02</span></div>
+   <div class="text-content">משפט לציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-74" data-start="544.73" data-end="545.24" onclick="seekTo(544.73)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:04</span></div>
+   <div class="text-content">ומתחיל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-75" data-start="547.1999999999999" data-end="550.1800000000001" onclick="seekTo(547.1999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:07</span></div>
+   <div class="text-content">גובה 1,190</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-76" data-start="559.36" data-end="562.12" onclick="seekTo(559.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:19</span></div>
+   <div class="text-content">מהירות 92 קצת נעימה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-77" data-start="566.22" data-end="570.6" onclick="seekTo(566.22)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:26</span></div>
+   <div class="text-content">מתקשר תיקונים עדינים גובה 1,192 ומתחיל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-78" data-start="570.9000000000001" data-end="575.8" onclick="seekTo(570.9000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:30</span></div>
+   <div class="text-content">עובר לנסיקה והטייה אף, הטייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-79" data-start="576.94" data-end="579.06" onclick="seekTo(576.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:36</span></div>
+   <div class="text-content">אף מהירות יורדת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-80" data-start="579.88" data-end="581.64" onclick="seekTo(579.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:39</span></div>
+   <div class="text-content">אף קוב עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-81" data-start="582.1" data-end="583.22" onclick="seekTo(582.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:42</span></div>
+   <div class="text-content">הטייה מהירות 75</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-82" data-start="585.24" data-end="585.78" onclick="seekTo(585.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:45</span></div>
+   <div class="text-content">אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-83" data-start="586.5" data-end="587.8" onclick="seekTo(586.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:46</span></div>
+   <div class="text-content">הטייה קצת מוציא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-84" data-start="589.14" data-end="590.6" onclick="seekTo(589.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:49</span></div>
+   <div class="text-content">מועידף המיעוט יורדת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-85" data-start="592.24" data-end="593.62" onclick="seekTo(592.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:52</span></div>
+   <div class="text-content">מועידף הוסיף קצת כוח.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-86" data-start="593.62" data-end="596.66" onclick="seekTo(593.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:53</span></div>
+   <div class="text-content">מהירות שישים וחמש הטעיה, מוציא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-87" data-start="597.46" data-end="598.02" onclick="seekTo(597.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:57</span></div>
+   <div class="text-content">אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-88" data-start="598.02" data-end="601.78" onclick="seekTo(598.02)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>09:58</span></div>
+   <div class="text-content">מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-89" data-start="601.78" data-end="603.34" onclick="seekTo(601.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:01</span></div>
+   <div class="text-content">מהירות נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-90" data-start="604.0400000000001" data-end="604.6" onclick="seekTo(604.0400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:04</span></div>
+   <div class="text-content">מהירות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-91" data-start="605.6" data-end="608.94" onclick="seekTo(605.6)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:05</span></div>
+   <div class="text-content">אף משפט הציר גובה עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-92" data-start="610.12" data-end="611.82" onclick="seekTo(610.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:10</span></div>
+   <div class="text-content">מוריד את האף מהירות נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-93" data-start="612.58" data-end="613.58" onclick="seekTo(612.58)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:12</span></div>
+   <div class="text-content">מוציא הטעיה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-94" data-start="615.26" data-end="621.3" onclick="seekTo(615.26)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:15</span></div>
+   <div class="text-content">אף מהירות עולה, רואה את הציר גובה תקין</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-95" data-start="621.69" data-end="623.44" onclick="seekTo(621.69)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:21</span></div>
+   <div class="text-content">מהירות משכלה לעלות מוריד את האף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-96" data-start="624.62" data-end="626.3" onclick="seekTo(624.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:24</span></div>
+   <div class="text-content">שופט להציע</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-97" data-start="627.13" data-end="630.04" onclick="seekTo(627.13)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:27</span></div>
+   <div class="text-content">מהירות 63 תקין מחליף קצת הטעיה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-98" data-start="630.9100000000001" data-end="632.52" onclick="seekTo(630.9100000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:30</span></div>
+   <div class="text-content">שופט לציר, מעורד 67</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-99" data-start="633.49" data-end="634.84" onclick="seekTo(633.49)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:33</span></div>
+   <div class="text-content">מוכן לעבור להנמכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-100" data-start="636.07" data-end="639.42" onclick="seekTo(636.07)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:36</span></div>
+   <div class="text-content">מתיישר לציר, מעורד 70 על הציר,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-101" data-start="639.42" data-end="641.64" onclick="seekTo(639.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:39</span></div>
+   <div class="text-content">מחליף הטייה, מוריד כוח מכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-102" data-start="641.98" data-end="644.52" onclick="seekTo(641.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:41</span></div>
+   <div class="text-content">מוציא קצת הטייה תיקונים עדינים מזכיר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-103" data-start="645.14" data-end="646.34" onclick="seekTo(645.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:45</span></div>
+   <div class="text-content">מהירות עולה – מעמד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-104" data-start="647.38" data-end="647.9" onclick="seekTo(647.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:47</span></div>
+   <div class="text-content">מעמד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-105" data-start="649.5" data-end="652.0" onclick="seekTo(649.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:49</span></div>
+   <div class="text-content">גבוהה ממשיך לרמית מוריד כח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-106" data-start="653.16" data-end="653.6" onclick="seekTo(653.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:53</span></div>
+   <div class="text-content">הטייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-107" data-start="654.46" data-end="654.88" onclick="seekTo(654.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:54</span></div>
+   <div class="text-content">תקין</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-108" data-start="655.72" data-end="657.44" onclick="seekTo(655.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:55</span></div>
+   <div class="text-content">כוח מוריד מהירות יורדת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-109" data-start="659.0400000000001" data-end="661.32" onclick="seekTo(659.0400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>10:59</span></div>
+   <div class="text-content">כוח ממשיכו להוריד מהירות 74</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-110" data-start="663.14" data-end="664.76" onclick="seekTo(663.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:03</span></div>
+   <div class="text-content">מסדר על הציר יש</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-111" data-start="664.76" data-end="666.36" onclick="seekTo(664.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:04</span></div>
+   <div class="text-content">הטייה תקין</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-112" data-start="666.6999999999999" data-end="668.78" onclick="seekTo(666.6999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:06</span></div>
+   <div class="text-content">מהירות משחרת, מועדה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-113" data-start="670.14" data-end="671.5" onclick="seekTo(670.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:10</span></div>
+   <div class="text-content">מהירות 65</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-114" data-start="672.18" data-end="673.64" onclick="seekTo(672.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:12</span></div>
+   <div class="text-content">הטייה תקין</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-115" data-start="675.0999999999999" data-end="675.8" onclick="seekTo(675.0999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:15</span></div>
+   <div class="text-content">מועצתיו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-116" data-start="676.9799999999999" data-end="677.68" onclick="seekTo(676.9799999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:16</span></div>
+   <div class="text-content">אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-117" data-start="678.18" data-end="681.0" onclick="seekTo(678.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:18</span></div>
+   <div class="text-content">מהירות עולה שופט לציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-118" data-start="682.9599999999999" data-end="684.64" onclick="seekTo(682.9599999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:22</span></div>
+   <div class="text-content">מהירות מועצותיו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-119" data-start="686.16" data-end="687.5" onclick="seekTo(686.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:26</span></div>
+   <div class="text-content">מזוהה על הברכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-120" data-start="687.5" data-end="689.04" onclick="seekTo(687.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:27</span></div>
+   <div class="text-content">שופט להציע</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-121" data-start="690.76" data-end="691.94" onclick="seekTo(690.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:30</span></div>
+   <div class="text-content">מועצת רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-122" data-start="693.3599999999999" data-end="695.6" onclick="seekTo(693.3599999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:33</span></div>
+   <div class="text-content">אה מהירות  מורסתא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-123" data-start="696.9399999999999" data-end="698.06" onclick="seekTo(696.9399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:36</span></div>
+   <div class="text-content">גובה ירד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-124" data-start="701.24" data-end="702.12" onclick="seekTo(701.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:41</span></div>
+   <div class="text-content">מורסתא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-125" data-start="707.76" data-end="708.94" onclick="seekTo(707.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:47</span></div>
+   <div class="text-content">שופט להציע</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-126" data-start="717.5" data-end="718.74" onclick="seekTo(717.5)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>11:57</span></div>
+   <div class="text-content">צריך</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-127" data-start="718.74" data-end="719.34" onclick="seekTo(718.74)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>11:58</span></div>
+   <div class="text-content">להגביר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-128" data-start="721.6600000000001" data-end="725.3" onclick="seekTo(721.6600000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:01</span></div>
+   <div class="text-content">מהירות ל-90 שרים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-129" data-start="729.2199999999999" data-end="731.36" onclick="seekTo(729.2199999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:09</span></div>
+   <div class="text-content">מוסיף כוח, נכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-130" data-start="731.36" data-end="733.86" onclick="seekTo(731.36)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>12:11</span></div>
+   <div class="text-content">מתקשר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-131" data-start="733.86" data-end="734.52" onclick="seekTo(733.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:13</span></div>
+   <div class="text-content">מועדה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-132" data-start="734.9399999999999" data-end="736.7" onclick="seekTo(734.9399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:14</span></div>
+   <div class="text-content">מהירות עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-133" data-start="737.2199999999999" data-end="737.92" onclick="seekTo(737.2199999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:17</span></div>
+   <div class="text-content">180</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-134" data-start="760.12" data-end="768.16" onclick="seekTo(760.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:40</span></div>
+   <div class="text-content">סיימתי את התרגיל, גובה שם הטוסטים, 190. יוצא ללגת תחום, אחד זמנים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-135" data-start="768.16" data-end="769.78" onclick="seekTo(768.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:48</span></div>
+   <div class="text-content">של 7 דקות,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-136" data-start="770.68" data-end="776.58" onclick="seekTo(770.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>12:50</span></div>
+   <div class="text-content">8 דקות יש לי זמן להזכיר טוב וזה האנטנות</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-137" data-start="779.6" data-end="780.66" onclick="seekTo(779.6)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>12:59</span></div>
+   <div class="text-content">אוקיי,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-138" data-start="781.0" data-end="784.3" onclick="seekTo(781.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:01</span></div>
+   <div class="text-content">רוצה להסתדר בגובה 1,100. בתרגיל הבא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-139" data-start="784.69" data-end="790.2" onclick="seekTo(784.69)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:04</span></div>
+   <div class="text-content">פיינל באמצע תו מוסיף כוח מהירות אני עושה 80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-140" data-start="793.82" data-end="795.52" onclick="seekTo(793.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:13</span></div>
+   <div class="text-content">נקודה לתחקיר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-141" data-start="797.73" data-end="802.08" onclick="seekTo(797.73)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:17</span></div>
+   <div class="text-content">הנקודה הראשונה זה המהירויות שהגעתי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-142" data-start="803.16" data-end="805.26" onclick="seekTo(803.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:23</span></div>
+   <div class="text-content">הגעתי למינוס עשר גשרים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-143" data-start="806.4000000000001" data-end="808.94" onclick="seekTo(806.4000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:26</span></div>
+   <div class="text-content">כי הרמתי את האף גבוה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-144" data-start="811.3299999999999" data-end="813.9" onclick="seekTo(811.3299999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:31</span></div>
+   <div class="text-content">בפעם הבאה אני רוצה לשים את האף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-145" data-start="814.13" data-end="815.2" onclick="seekTo(814.13)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:34</span></div>
+   <div class="text-content">עוד יותר רמוב,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-146" data-start="816.12" data-end="820.38" onclick="seekTo(816.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:36</span></div>
+   <div class="text-content">והנקודה השנייה זה שבסוף לא התיישרתי לציר,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-147" data-start="821.72" data-end="825.06" onclick="seekTo(821.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:41</span></div>
+   <div class="text-content">התיישרתי משמאל אליו במקביל והייתי צריך לדקן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-148" data-start="828.5" data-end="830.84" onclick="seekTo(828.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:48</span></div>
+   <div class="text-content">ולא הגבתי מבחינת הטעיה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-149" data-start="830.84" data-end="839.34" onclick="seekTo(830.84)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>13:50</span></div>
+   <div class="text-content">אז ממש לקראת הציר אני רוצה להתחיל לשפוט אל הציר. זה ישמש אותי גם בשמינייה וגם בפניות,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-150" data-start="840.04" data-end="843.66" onclick="seekTo(840.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:00</span></div>
+   <div class="text-content">אז זו נקודה חשובה שאני צריך לשים לב אליה בהמשך.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-151" data-start="843.84" data-end="845.02" onclick="seekTo(843.84)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:03</span></div>
+   <div class="text-content">זו הנקודה העיקרית.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-152" data-start="845.34" data-end="846.0" onclick="seekTo(845.34)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>14:05</span></div>
+   <div class="text-content">אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-153" data-start="847.5400000000001" data-end="851.8" onclick="seekTo(847.5400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:07</span></div>
+   <div class="text-content">כרגע מהירות 80 גובה 1100,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-154" data-start="852.3199999999999" data-end="853.22" onclick="seekTo(852.3199999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:12</span></div>
+   <div class="text-content">גובה שאין עושה,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-155" data-start="853.4" data-end="855.58" onclick="seekTo(853.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:13</span></div>
+   <div class="text-content">מועצת תו רוצה להתאפשר</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-156" data-start="856.74" data-end="858.8" onclick="seekTo(856.74)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>14:16</span></div>
+   <div class="text-content">באיזה כיוון אתה רוצה לעשות את הפריינל?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-157" data-start="859.06" data-end="860.16" onclick="seekTo(859.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:19</span></div>
+   <div class="text-content">לכיוון צפון</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-158" data-start="860.84" data-end="861.92" onclick="seekTo(860.84)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>14:20</span></div>
+   <div class="text-content">בסדר, אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-159" data-start="862.82" data-end="863.54" onclick="seekTo(862.82)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>14:22</span></div>
+   <div class="text-content">בסדר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-160" data-start="865.14" data-end="866.1" onclick="seekTo(865.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:25</span></div>
+   <div class="text-content">באמצע כ</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-161" data-start="869.36" data-end="870.3" onclick="seekTo(869.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:29</span></div>
+   <div class="text-content">מזוהה על הפחה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-162" data-start="871.54" data-end="873.04" onclick="seekTo(871.54)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:31</span></div>
+   <div class="text-content">ומזוהה על הציר שלי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-163" data-start="873.68" data-end="875.1" onclick="seekTo(873.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:33</span></div>
+   <div class="text-content">וזה היה את הנקודה של ה-פיינל</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-164" data-start="876.88" data-end="879.76" onclick="seekTo(876.88)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>14:36</span></div>
+   <div class="text-content">איפה ה-פיינל? תגיד לי במילה, איפה ה-פיינל?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-165" data-start="879.94" data-end="882.98" onclick="seekTo(879.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:39</span></div>
+   <div class="text-content">הפיינל הוא כרגע שעה 1100 שלנו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-166" data-start="883.52" data-end="887.4" onclick="seekTo(883.52)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:43</span></div>
+   <div class="text-content">יש פה שדה ירוק משמאל אליו בשדה בצורת מחולש</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-167" data-start="887.4" data-end="895.28" onclick="seekTo(887.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:47</span></div>
+   <div class="text-content">אני רואה. אתחיל בפיצול נחלים משמאל, כשאני אוהב אפשר אליו במדרשע</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-168" data-start="896.21" data-end="897.08" onclick="seekTo(896.21)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:56</span></div>
+   <div class="text-content">מהירות 80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-169" data-start="899.0500000000001" data-end="904.56" onclick="seekTo(899.0500000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>14:59</span></div>
+   <div class="text-content">קצת מעלה אף רוצה לעלות בגובה ומוכן להתחיל פיינלס</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-170" data-start="908.45" data-end="909.51" onclick="seekTo(908.45)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:08</span></div>
+   <div class="text-content">מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-171" data-start="910.39" data-end="911.38" onclick="seekTo(910.39)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:10</span></div>
+   <div class="text-content">גובה 1200</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-172" data-start="912.48" data-end="915.26" onclick="seekTo(912.48)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:12</span></div>
+   <div class="text-content">מהירות שבעים, מתחיל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-173" data-start="916.06" data-end="920.86" onclick="seekTo(916.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:16</span></div>
+   <div class="text-content">להוריד כוח בהדרגה ל-40. מכניס רגל לשמר לכיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-174" data-start="922.4399999999999" data-end="922.92" onclick="seekTo(922.4399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:22</span></div>
+   <div class="text-content">אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-175" data-start="924.4399999999999" data-end="926.4" onclick="seekTo(924.4399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:24</span></div>
+   <div class="text-content">מכניס ומתקן כיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-176" data-start="926.9" data-end="928.88" onclick="seekTo(926.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:26</span></div>
+   <div class="text-content">כוח מוריד באמצע תא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-177" data-start="929.08" data-end="932.04" onclick="seekTo(929.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:29</span></div>
+   <div class="text-content">מהירות שישים ושתיים, מהירות נמוכה מועדה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-178" data-start="933.4000000000001" data-end="943.62" onclick="seekTo(933.4000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:33</span></div>
+   <div class="text-content">כוח 50 מהירות 60 גובה לא יורד, ממשיך להוריד את הכוח ושומע את הכיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-179" data-start="944.2900000000001" data-end="947.38" onclick="seekTo(944.2900000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:44</span></div>
+   <div class="text-content">גובה יורד 64 מהירות 60</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-180" data-start="948.85" data-end="950.62" onclick="seekTo(948.85)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:48</span></div>
+   <div class="text-content">ממשיך להוריד שומר לכיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-181" data-start="950.9300000000001" data-end="955.02" onclick="seekTo(950.9300000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:50</span></div>
+   <div class="text-content">אני נראה לי באוברסוט מוריד כח אוברסיט קצב</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-182" data-start="955.02" data-end="956.52" onclick="seekTo(955.02)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>15:55</span></div>
+   <div class="text-content">T,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-183" data-start="956.8" data-end="958.0" onclick="seekTo(956.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:56</span></div>
+   <div class="text-content">קצת מוריד אף.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-184" data-start="959.5999999999999" data-end="960.92" onclick="seekTo(959.5999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>15:59</span></div>
+   <div class="text-content">נראה לי כרגע</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-185" data-start="960.92" data-end="961.76" onclick="seekTo(960.92)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>16:00</span></div>
+   <div class="text-content">בשוות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-186" data-start="961.76" data-end="967.0" onclick="seekTo(961.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:01</span></div>
+   <div class="text-content">זווית שטוחה מאמצעי הכח מכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-187" data-start="967.78" data-end="973.36" onclick="seekTo(967.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:07</span></div>
+   <div class="text-content">גובה 410 עכשיו באורשוט זווית צדולה מאומצת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-188" data-start="973.36" data-end="975.08" onclick="seekTo(973.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:13</span></div>
+   <div class="text-content">מוריד כוח, מעמם אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-189" data-start="977.3000000000001" data-end="986.42" onclick="seekTo(977.3000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:17</span></div>
+   <div class="text-content">רוצה להקטין, מעמד 50 שומר כיוון גובה 300 קצב טוב זווית נהיית</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-190" data-start="986.5" data-end="988.0" onclick="seekTo(986.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:26</span></div>
+   <div class="text-content">מקצת גדולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-191" data-start="989.0999999999999" data-end="990.16" onclick="seekTo(989.0999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:29</span></div>
+   <div class="text-content">ומועד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-192" data-start="990.8199999999999" data-end="992.68" onclick="seekTo(990.8199999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:30</span></div>
+   <div class="text-content">מהירות 40 מתחרב</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-193" data-start="992.68" data-end="994.42" onclick="seekTo(992.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:32</span></div>
+   <div class="text-content">מוסיף קור,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-194" data-start="995.2299999999999" data-end="1000.68" onclick="seekTo(995.2299999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:35</span></div>
+   <div class="text-content">מהירות שלושים גובה מאה שישים ו...</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-195" data-start="1000.75" data-end="1004.96" onclick="seekTo(1000.75)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:40</span></div>
+   <div class="text-content">מאה שישים הולך סביב</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-196" data-start="1005.8699999999999" data-end="1007.22" onclick="seekTo(1005.8699999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:45</span></div>
+   <div class="text-content">נכניס רגל לשמאל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-197" data-start="1007.5699999999999" data-end="1008.26" onclick="seekTo(1007.5699999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:47</span></div>
+   <div class="text-content">רוצה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-198" data-start="1010.6099999999999" data-end="1012.62" onclick="seekTo(1010.6099999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:50</span></div>
+   <div class="text-content">לעבור לנסיקה, מהירות שומענים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-199" data-start="1012.6099999999999" data-end="1013.52" onclick="seekTo(1012.6099999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:52</span></div>
+   <div class="text-content">מהירות עולם</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-200" data-start="1018.24" data-end="1020.44" onclick="seekTo(1018.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>16:58</span></div>
+   <div class="text-content">מהירות עולה, מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-201" data-start="1021.7" data-end="1024.26" onclick="seekTo(1021.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:01</span></div>
+   <div class="text-content">מהירות 56. אני בנסיקה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-202" data-start="1025.16" data-end="1026.7" onclick="seekTo(1025.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:05</span></div>
+   <div class="text-content">מוריד הודף תיקון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-203" data-start="1026.88" data-end="1028.06" onclick="seekTo(1026.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:06</span></div>
+   <div class="text-content">תכליתי למיעוט</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-204" data-start="1031.0" data-end="1031.88" onclick="seekTo(1031.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:11</span></div>
+   <div class="text-content">מהירות 70</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-205" data-start="1038.34" data-end="1039.4" onclick="seekTo(1038.34)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:18</span></div>
+   <div class="text-content">ומיעוט 80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-206" data-start="1040.64" data-end="1042.42" onclick="seekTo(1040.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:20</span></div>
+   <div class="text-content">מתחקרת שנייה אחת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-207" data-start="1043.52" data-end="1050.86" onclick="seekTo(1043.52)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:23</span></div>
+   <div class="text-content">אני מוריד את המדרגות, מדרגת גובה ל-60 ומתכנן הנמכה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-208" data-start="1052.8799999999999" data-end="1055.32" onclick="seekTo(1052.8799999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:32</span></div>
+   <div class="text-content">מזה כבר היה את הנקודה של הינפ.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-209" data-start="1059.1399999999999" data-end="1066.16" onclick="seekTo(1059.1399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:39</span></div>
+   <div class="text-content">אוקיי, מבחינת זמנים 1234 יש לי זמן לתחקר ולהתחמם.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-210" data-start="1067.7" data-end="1069.52" onclick="seekTo(1067.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:47</span></div>
+   <div class="text-content">יש לי בעזרת שמונה דקות.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-211" data-start="1070.68" data-end="1073.94" onclick="seekTo(1070.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:50</span></div>
+   <div class="text-content">אני חושב שנייה ומנמיך לגובה. אוקיי,</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-212" data-start="1074.02" data-end="1076.92" onclick="seekTo(1074.02)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>17:54</span></div>
+   <div class="text-content">רק הערה נכון, אנחנו עדיין טסים בגובה, נכון?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-213" data-start="1077.06" data-end="1078.4" onclick="seekTo(1077.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>17:57</span></div>
+   <div class="text-content">כן, אני מנמיך עכשיו. אתה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-214" data-start="1078.4" data-end="1080.58" onclick="seekTo(1078.4)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>17:58</span></div>
+   <div class="text-content">רוצה לתחקר או להנמיך?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-215" data-start="1080.74" data-end="1081.54" onclick="seekTo(1080.74)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:00</span></div>
+   <div class="text-content">אני מתחקר.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-216" data-start="1082.2" data-end="1083.72" onclick="seekTo(1082.2)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>18:02</span></div>
+   <div class="text-content">אז אם אנחנו מתחקרים,</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-217" data-start="1083.92" data-end="1089.76" onclick="seekTo(1083.92)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>18:03</span></div>
+   <div class="text-content">תשים את הצפצפות לטיסת הגובה. קיבלתי. לפני שאתה יורד לגובה הנמוך,</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-218" data-start="1089.86" data-end="1092.08" onclick="seekTo(1089.86)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>18:09</span></div>
+   <div class="text-content">תוריד את הצפצפות בסדר? קיבלתי.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-219" data-start="1092.08" data-end="1093.48" onclick="seekTo(1092.08)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>18:12</span></div>
+   <div class="text-content">אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-220" data-start="1093.62" data-end="1095.42" onclick="seekTo(1093.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:13</span></div>
+   <div class="text-content">אז מתיישר באשר כהן,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-221" data-start="1096.96" data-end="1099.52" onclick="seekTo(1096.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:16</span></div>
+   <div class="text-content">מהירות נוספת על 80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-222" data-start="1102.54" data-end="1116.32" onclick="seekTo(1102.54)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:22</span></div>
+   <div class="text-content">מטסטרת הפיינל הנתונים שהגעתי אליהם בסוף היה מהירות שלושים גובה מאה שישים זה 60 רגל מעל הגובה המקסימלי שהייתי צריך לבוא אליו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-223" data-start="1117.46" data-end="1118.4" onclick="seekTo(1117.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:37</span></div>
+   <div class="text-content">למה זה היה?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-224" data-start="1125.62" data-end="1127.64" onclick="seekTo(1125.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:45</span></div>
+   <div class="text-content">שנייה, אני חושב שזה היה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-225" data-start="1136.3999999999999" data-end="1137.94" onclick="seekTo(1136.3999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>18:56</span></div>
+   <div class="text-content">ניגש לפעם הבאה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-226" data-start="1142.36" data-end="1147.62" onclick="seekTo(1142.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:02</span></div>
+   <div class="text-content">השימוש בקולקטיב והערכת הזווית ולקו הגישה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-227" data-start="1148.26" data-end="1154.16" onclick="seekTo(1148.26)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:08</span></div>
+   <div class="text-content">היה לא מספיק טוב כי הגעתי במהירות הנכונה למקום הנכון,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-228" data-start="1154.2" data-end="1155.88" onclick="seekTo(1154.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:14</span></div>
+   <div class="text-content">בגובה מעל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-229" data-start="1156.44" data-end="1166.6" onclick="seekTo(1156.44)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:16</span></div>
+   <div class="text-content">אז פעם באה אני רוצה יותר לשים דגש על השויט אורבשוט שזה זווית וקו גישה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-230" data-start="1168.62" data-end="1172.2" onclick="seekTo(1168.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:28</span></div>
+   <div class="text-content">וליצוף מהיום את הגובה הגבוה שהגעתי אליו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-231" data-start="1172.42" data-end="1175.42" onclick="seekTo(1172.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:32</span></div>
+   <div class="text-content">ולתקן תוכנים לגובה נמוך לפני בעד האורבשוט</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-232" data-start="1175.42" data-end="1177.3" onclick="seekTo(1175.42)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>19:35</span></div>
+   <div class="text-content">זו הנקודה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-233" data-start="1178.28" data-end="1180.62" onclick="seekTo(1178.28)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:38</span></div>
+   <div class="text-content">עכשיו אני מוריד את</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-234" data-start="1180.62" data-end="1182.92" onclick="seekTo(1180.62)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>19:40</span></div>
+   <div class="text-content">הצפצופות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-235" data-start="1182.92" data-end="1188.2" onclick="seekTo(1182.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:42</span></div>
+   <div class="text-content">ומנמיך לגובה של 60, מזהה את האנטנות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-236" data-start="1189.5" data-end="1191.0" onclick="seekTo(1189.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:49</span></div>
+   <div class="text-content">- אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-237" data-start="1191.0" data-end="1192.92" onclick="seekTo(1191.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:51</span></div>
+   <div class="text-content">- מוריד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-238" data-start="1194.18" data-end="1195.26" onclick="seekTo(1194.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:54</span></div>
+   <div class="text-content">ישר גלפיים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-239" data-start="1198.06" data-end="1198.6" onclick="seekTo(1198.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>19:58</span></div>
+   <div class="text-content">נעמה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-240" data-start="1200.06" data-end="1202.66" onclick="seekTo(1200.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:00</span></div>
+   <div class="text-content">צעד יורד מהירות, מהירות שבעים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-241" data-start="1204.0799999999997" data-end="1207.98" onclick="seekTo(1204.0799999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:04</span></div>
+   <div class="text-content">כוח 45. מהירות יורדת גובה יורד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-242" data-start="1208.32" data-end="1209.6" onclick="seekTo(1208.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:08</span></div>
+   <div class="text-content">מהירות שבעים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-243" data-start="1210.9199999999998" data-end="1211.58" onclick="seekTo(1210.9199999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:10</span></div>
+   <div class="text-content">מועצת תא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-244" data-start="1212.32" data-end="1212.76" onclick="seekTo(1212.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:12</span></div>
+   <div class="text-content">מהירות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-245" data-start="1217.3399999999997" data-end="1219.1" onclick="seekTo(1217.3399999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:17</span></div>
+   <div class="text-content">זמנים בסדר</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-246" data-start="1220.36" data-end="1222.6" onclick="seekTo(1220.36)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>20:20</span></div>
+   <div class="text-content">מה זה בסדר? כמה זמן יש לנו להתחמם?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-247" data-start="1222.8" data-end="1226.2" onclick="seekTo(1222.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:22</span></div>
+   <div class="text-content">יש לנו עשר דקות להתחמם,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-248" data-start="1226.76" data-end="1228.74" onclick="seekTo(1226.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:26</span></div>
+   <div class="text-content">עד שצריך להתחיל את העניין הפועל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-249" data-start="1229.64" data-end="1230.0" onclick="seekTo(1229.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:29</span></div>
+   <div class="text-content">אז... כן?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-250" data-start="1230.74" data-end="1231.18" onclick="seekTo(1230.74)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:30</span></div>
+   <div class="text-content">כן.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-251" data-start="1232.1" data-end="1235.04" onclick="seekTo(1232.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:32</span></div>
+   <div class="text-content">עכשיו 15 דקות החימום מסתיים ב-25</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-252" data-start="1246.82" data-end="1250.2" onclick="seekTo(1246.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:46</span></div>
+   <div class="text-content">אוקיי מנמיך לגובה נמוך ועכשיו גובה 130</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-253" data-start="1253.3" data-end="1255.3" onclick="seekTo(1253.3)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:53</span></div>
+   <div class="text-content">הוסיף קצת כוח, מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-254" data-start="1258.6499999999999" data-end="1260.0" onclick="seekTo(1258.6499999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>20:58</span></div>
+   <div class="text-content">גובה עונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-255" data-start="1260.87" data-end="1261.88" onclick="seekTo(1260.87)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:00</span></div>
+   <div class="text-content">מהירות עולה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-256" data-start="1261.88" data-end="1265.08" onclick="seekTo(1261.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:01</span></div>
+   <div class="text-content">מועדות ת&#x27; מתקן מהירות ל-90</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-257" data-start="1267.61" data-end="1268.96" onclick="seekTo(1267.61)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:07</span></div>
+   <div class="text-content">רוצה לזהות? גובה 60</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-258" data-start="1269.99" data-end="1270.86" onclick="seekTo(1269.99)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:09</span></div>
+   <div class="text-content">קצת עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-259" data-start="1271.45" data-end="1272.36" onclick="seekTo(1271.45)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:11</span></div>
+   <div class="text-content">יש גבעה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-260" data-start="1273.86" data-end="1275.48" onclick="seekTo(1273.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:13</span></div>
+   <div class="text-content">גובה, 55</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-261" data-start="1280.94" data-end="1282.42" onclick="seekTo(1280.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:20</span></div>
+   <div class="text-content">מוריד אף, מהירות נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-262" data-start="1286.08" data-end="1286.52" onclick="seekTo(1286.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:26</span></div>
+   <div class="text-content">אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-263" data-start="1287.02" data-end="1289.74" onclick="seekTo(1287.02)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:27</span></div>
+   <div class="text-content">מהירות מוריד עודף מוססת כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-264" data-start="1291.76" data-end="1292.48" onclick="seekTo(1291.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:31</span></div>
+   <div class="text-content">מהירות 60</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-265" data-start="1293.46" data-end="1295.42" onclick="seekTo(1293.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:33</span></div>
+   <div class="text-content">מעלה אף יש רעיין מטפס</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-266" data-start="1299.14" data-end="1299.98" onclick="seekTo(1299.14)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>21:39</span></div>
+   <div class="text-content">אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-267" data-start="1301.1399999999999" data-end="1304.12" onclick="seekTo(1301.1399999999999)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>21:41</span></div>
+   <div class="text-content">באיזה מהירות אנחנו רוצים לעשות את החימום רק? 90,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-268" data-start="1304.56" data-end="1305.56" onclick="seekTo(1304.56)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:44</span></div>
+   <div class="text-content">אני מגביר</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-269" data-start="1305.56" data-end="1307.02" onclick="seekTo(1305.56)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>21:45</span></div>
+   <div class="text-content">על זה. אוקיי, בסדר.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-270" data-start="1311.0" data-end="1313.02" onclick="seekTo(1311.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:51</span></div>
+   <div class="text-content">מוריד הודף, מהירות עולה 66</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-271" data-start="1315.62" data-end="1319.36" onclick="seekTo(1315.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>21:55</span></div>
+   <div class="text-content">וזה הגברות באופן רחוק גובה 100</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-272" data-start="1320.92" data-end="1323.96" onclick="seekTo(1320.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:00</span></div>
+   <div class="text-content">מהירות 75 נמשיכה לעלות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-273" data-start="1325.42" data-end="1329.98" onclick="seekTo(1325.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:05</span></div>
+   <div class="text-content">מהירות שמונים, גובה 85. קצת מטפס</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-274" data-start="1333.96" data-end="1337.98" onclick="seekTo(1333.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:13</span></div>
+   <div class="text-content">בוקר רובשים תחלוטין רוצה לזהות אותם לקראת הצנעת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-275" data-start="1348.08" data-end="1351.34" onclick="seekTo(1348.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:28</span></div>
+   <div class="text-content">וזו את הנקודה של ההצנה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-276" data-start="1351.34" data-end="1353.78" onclick="seekTo(1351.34)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:31</span></div>
+   <div class="text-content">מנהיג גובה, מהירות 87</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-277" data-start="1357.57" data-end="1362.06" onclick="seekTo(1357.57)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:37</span></div>
+   <div class="text-content">ומהירות 90. יורד בגובה ורוצה להתחיל שינוי מהירות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-278" data-start="1365.37" data-end="1367.64" onclick="seekTo(1365.37)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:45</span></div>
+   <div class="text-content">רגש לעשות צ&#x27;ק זה מהירות 60</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-279" data-start="1368.33" data-end="1368.82" onclick="seekTo(1368.33)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:48</span></div>
+   <div class="text-content">וחמש</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-280" data-start="1369.95" data-end="1370.82" onclick="seekTo(1369.95)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:49</span></div>
+   <div class="text-content">הגובה יורד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-281" data-start="1373.61" data-end="1374.8" onclick="seekTo(1373.61)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:53</span></div>
+   <div class="text-content">מהירות 92</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-282" data-start="1376.91" data-end="1378.04" onclick="seekTo(1376.91)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>22:56</span></div>
+   <div class="text-content">יש גבעה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-283" data-start="1380.7" data-end="1383.54" onclick="seekTo(1380.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:00</span></div>
+   <div class="text-content">מתחיל את השינוי מהירות, מוריד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-284" data-start="1383.9399999999998" data-end="1386.34" onclick="seekTo(1383.9399999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:03</span></div>
+   <div class="text-content">נגיד רגל מאים אף, כוח ל-40</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-285" data-start="1388.06" data-end="1392.42" onclick="seekTo(1388.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:08</span></div>
+   <div class="text-content">מהירות יורדת גובה 110 עזר הגבעה באמצע תו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-286" data-start="1392.84" data-end="1394.02" onclick="seekTo(1392.84)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:12</span></div>
+   <div class="text-content">מהירות 75</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-287" data-start="1396.06" data-end="1397.12" onclick="seekTo(1396.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:16</span></div>
+   <div class="text-content">מהירות 70</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-288" data-start="1397.8799999999999" data-end="1400.28" onclick="seekTo(1397.8799999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:17</span></div>
+   <div class="text-content">גובה 130 יש גבעה וגובה יורד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-289" data-start="1400.86" data-end="1403.42" onclick="seekTo(1400.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:20</span></div>
+   <div class="text-content">באמצע תו, מהירות 65 צ&#x27;ק הוסיף כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-290" data-start="1404.0800000000002" data-end="1405.54" onclick="seekTo(1404.0800000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:24</span></div>
+   <div class="text-content">הוסיף כוח, מכניס רגל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-291" data-start="1405.82" data-end="1409.48" onclick="seekTo(1405.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:25</span></div>
+   <div class="text-content">מהירות 58 מגביר גובה עולה מוריד עף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-292" data-start="1410.22" data-end="1411.16" onclick="seekTo(1410.22)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:30</span></div>
+   <div class="text-content">מקטין קצת כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-293" data-start="1412.0400000000002" data-end="1413.38" onclick="seekTo(1412.0400000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:32</span></div>
+   <div class="text-content">רוצה להגביר למיעוט 90</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-294" data-start="1416.18" data-end="1417.64" onclick="seekTo(1416.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:36</span></div>
+   <div class="text-content">מהירות 70 מוריד עוד עף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-295" data-start="1419.5200000000002" data-end="1421.96" onclick="seekTo(1419.5200000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:39</span></div>
+   <div class="text-content">תיקונים תפקיתיים למהירות, המהירות עולה 75</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-296" data-start="1424.3000000000002" data-end="1424.98" onclick="seekTo(1424.3000000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:44</span></div>
+   <div class="text-content">מהירות 80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-297" data-start="1429.3400000000001" data-end="1430.16" onclick="seekTo(1429.3400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:49</span></div>
+   <div class="text-content">נתחיל פנייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-298" data-start="1433.98" data-end="1436.38" onclick="seekTo(1433.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:53</span></div>
+   <div class="text-content">מהירות 82 רצתה,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-299" data-start="1436.96" data-end="1437.44" onclick="seekTo(1436.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:56</span></div>
+   <div class="text-content">צלעית</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-300" data-start="1438.66" data-end="1439.54" onclick="seekTo(1438.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>23:58</span></div>
+   <div class="text-content">למהירות 90</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-301" data-start="1440.92" data-end="1441.72" onclick="seekTo(1440.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:00</span></div>
+   <div class="text-content">גובה 130</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-302" data-start="1445.86" data-end="1448.22" onclick="seekTo(1445.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:05</span></div>
+   <div class="text-content">עושים קצת הטייה להנמיך?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-303" data-start="1448.38" data-end="1449.54" onclick="seekTo(1448.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:08</span></div>
+   <div class="text-content">190 תקין.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-304" data-start="1451.78" data-end="1454.68" onclick="seekTo(1451.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:11</span></div>
+   <div class="text-content">אוקיי, גובה 85 מוציא קצת הטייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-305" data-start="1457.1399999999999" data-end="1461.8" onclick="seekTo(1457.1399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:17</span></div>
+   <div class="text-content">בואו נאמץ את האנטרן באופק הרחוק וזה תגיב האופק הרחוק</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-306" data-start="1464.2399999999998" data-end="1471.36" onclick="seekTo(1464.2399999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:24</span></div>
+   <div class="text-content">מהירות 90. כרגע אני בכיוון דרום, רוצה להתקרב לנקודה של הינפ ולהתארגן.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-307" data-start="1471.5" data-end="1472.9" onclick="seekTo(1471.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:31</span></div>
+   <div class="text-content">יש לי עוד חמש דקות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-308" data-start="1473.6399999999999" data-end="1475.64" onclick="seekTo(1473.6399999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:33</span></div>
+   <div class="text-content">עד ההתחלה של היינפ הראשון.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-309" data-start="1476.94" data-end="1480.94" onclick="seekTo(1476.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:36</span></div>
+   <div class="text-content">גובה 95. מתחקר שנייה את השינוי במהירות.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-310" data-start="1483.04" data-end="1487.58" onclick="seekTo(1483.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:43</span></div>
+   <div class="text-content">הגעתי למהירות 58. גובה 130, כלומר גובה היה גבוה,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-311" data-start="1487.74" data-end="1489.46" onclick="seekTo(1487.74)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:47</span></div>
+   <div class="text-content">רוצה לטוס בגובה נמוך יותר.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-312" data-start="1491.14" data-end="1495.4" onclick="seekTo(1491.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:51</span></div>
+   <div class="text-content">והנקודה העיקרית זה שעליתי בגובה במהלך ההגברה של הכוח,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-313" data-start="1495.8999999999999" data-end="1501.22" onclick="seekTo(1495.8999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>24:55</span></div>
+   <div class="text-content">אז רוצה להרים את הכוח בצורה יותר הדרגתית ולא חדה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-314" data-start="1501.46" data-end="1501.9" onclick="seekTo(1501.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:01</span></div>
+   <div class="text-content">זה אחד.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-315" data-start="1506.76" data-end="1508.54" onclick="seekTo(1506.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:06</span></div>
+   <div class="text-content">נמיך יש הנחל?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-316" data-start="1508.78" data-end="1510.72" onclick="seekTo(1508.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:08</span></div>
+   <div class="text-content">לזה אתה מתערב אותו כזה רחוק.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-317" data-start="1511.96" data-end="1515.1499999999999" onclick="seekTo(1511.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:11</span></div>
+   <div class="text-content">וזה את הנקודה של האמצעדאנט,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-318" data-start="1515.7" data-end="1516.66" onclick="seekTo(1515.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:15</span></div>
+   <div class="text-content">את הנקודה האחרונה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-319" data-start="1517.95" data-end="1519.36" onclick="seekTo(1517.95)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:17</span></div>
+   <div class="text-content">מהירות יורדת מועידה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-320" data-start="1529.8700000000001" data-end="1531.3" onclick="seekTo(1529.8700000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:29</span></div>
+   <div class="text-content">גובהו למועידה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-321" data-start="1534.3600000000001" data-end="1534.98" onclick="seekTo(1534.3600000000001)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>25:34</span></div>
+   <div class="text-content">אוקיי,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-322" data-start="1536.24" data-end="1538.4" onclick="seekTo(1536.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:36</span></div>
+   <div class="text-content">וזה את הנקודה של ה-NAP.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-323" data-start="1539.2" data-end="1540.14" onclick="seekTo(1539.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:39</span></div>
+   <div class="text-content">טס לשם.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-324" data-start="1542.6200000000001" data-end="1545.0" onclick="seekTo(1542.6200000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:42</span></div>
+   <div class="text-content">עושים קצת כוח? מאות נמוכה מוריד ה...</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-325" data-start="1548.98" data-end="1552.02" onclick="seekTo(1548.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:48</span></div>
+   <div class="text-content">מוריד הודף? מאות שומנים ברגע</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-326" data-start="1552.02" data-end="1555.6" onclick="seekTo(1552.02)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>25:52</span></div>
+   <div class="text-content">שאת רוצה להתחיל את ה-NAP תגיד לי אם אני אמסור לך את הנתונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-327" data-start="1555.6" data-end="1556.44" onclick="seekTo(1555.6)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>25:55</span></div>
+   <div class="text-content">בסדר גמור</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-328" data-start="1566.66" data-end="1567.5" onclick="seekTo(1566.66)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>26:06</span></div>
+   <div class="text-content">אוקיי,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-329" data-start="1570.1" data-end="1572.02" onclick="seekTo(1570.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:10</span></div>
+   <div class="text-content">מזהה את הנחל, מזהה את הנקודה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-330" data-start="1572.76" data-end="1576.12" onclick="seekTo(1572.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:12</span></div>
+   <div class="text-content">מקום ה-95 מיוט 80 מוכן לענת.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-331" data-start="1577.2" data-end="1579.82" onclick="seekTo(1577.2)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>26:17</span></div>
+   <div class="text-content">אוקיי אז אתה רואה את הנקודה של הענף? אני רואה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-332" data-start="1580.28" data-end="1581.64" onclick="seekTo(1580.28)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>26:20</span></div>
+   <div class="text-content">בסדר גמור יפה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-333" data-start="1582.56" data-end="1587.58" onclick="seekTo(1582.56)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>26:22</span></div>
+   <div class="text-content">אני רוצה שאתה תעבור בעינת בכיוון דרום</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-334" data-start="1588.16" data-end="1589.06" onclick="seekTo(1588.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:28</span></div>
+   <div class="text-content">כיוון דרום.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-335" data-start="1589.28" data-end="1592.72" onclick="seekTo(1589.28)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>26:29</span></div>
+   <div class="text-content">ב-90 ו-60 רגל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-336" data-start="1592.92" data-end="1595.56" onclick="seekTo(1592.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:32</span></div>
+   <div class="text-content">90 ו-60 רגל לכיוון דרום.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-337" data-start="1595.68" data-end="1599.56" onclick="seekTo(1595.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:35</span></div>
+   <div class="text-content">כיוון דרום זה בערך השביל,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-338" data-start="1600.3600000000001" data-end="1601.76" onclick="seekTo(1600.3600000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:40</span></div>
+   <div class="text-content">זו השלכת כיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-339" data-start="1602.04" data-end="1606.8" onclick="seekTo(1602.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:42</span></div>
+   <div class="text-content">מנמיך בגובה פותח עוד 15 שניות קדימה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-340" data-start="1607.3400000000001" data-end="1608.74" onclick="seekTo(1607.3400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:47</span></div>
+   <div class="text-content">מגביר קצת מהירות,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-341" data-start="1608.78" data-end="1611.18" onclick="seekTo(1608.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:48</span></div>
+   <div class="text-content">מהירות 86 רוצה להנמיך בגובה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-342" data-start="1612.3" data-end="1616.08" onclick="seekTo(1612.3)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:52</span></div>
+   <div class="text-content">מסייע את היישוב והכביש שזה גבול</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-343" data-start="1617.58" data-end="1620.32" onclick="seekTo(1617.58)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>26:57</span></div>
+   <div class="text-content">עוד חמש שניות, מתחיל פנייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-344" data-start="1621.1000000000001" data-end="1622.14" onclick="seekTo(1621.1000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:01</span></div>
+   <div class="text-content">מועצת כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-345" data-start="1622.46" data-end="1624.94" onclick="seekTo(1622.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:02</span></div>
+   <div class="text-content">מעוט 90 גובה מנמיך</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-346" data-start="1625.18" data-end="1626.2" onclick="seekTo(1625.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:05</span></div>
+   <div class="text-content">מתחיל בנייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-347" data-start="1631.38" data-end="1633.88" onclick="seekTo(1631.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:11</span></div>
+   <div class="text-content">רב-מעט יורד את מועצות תא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-348" data-start="1634.68" data-end="1635.26" onclick="seekTo(1634.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:14</span></div>
+   <div class="text-content">גובה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-349" data-start="1635.94" data-end="1636.52" onclick="seekTo(1635.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:15</span></div>
+   <div class="text-content">יורד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-350" data-start="1638.3400000000001" data-end="1641.98" onclick="seekTo(1638.3400000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:18</span></div>
+   <div class="text-content">נוסע בכיוון 1.80 וזה את השביל</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-351" data-start="1650.1799999999998" data-end="1651.5" onclick="seekTo(1650.1799999999998)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>27:30</span></div>
+   <div class="text-content">מהירות 90.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-352" data-start="1652.08" data-end="1653.84" onclick="seekTo(1652.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:32</span></div>
+   <div class="text-content">רגע, זו לא נראית לי הנקודה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-353" data-start="1660.8799999999999" data-end="1664.76" onclick="seekTo(1660.8799999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:40</span></div>
+   <div class="text-content">אני עושה הולך סביב ועושה את זה שוב.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-354" data-start="1666.24" data-end="1667.9" onclick="seekTo(1666.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:46</span></div>
+   <div class="text-content">כן הייתה נקודת טעות שלי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-355" data-start="1668.9" data-end="1670.72" onclick="seekTo(1668.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:48</span></div>
+   <div class="text-content">אוקיי. בתחילת הזמנים יש לי זמן.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-356" data-start="1670.98" data-end="1672.36" onclick="seekTo(1670.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:50</span></div>
+   <div class="text-content">עוד שלוש דקות.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-357" data-start="1673.04" data-end="1675.4" onclick="seekTo(1673.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>27:53</span></div>
+   <div class="text-content">להוסיף כוח, מוריד אחרי המיעוט יורדתי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-358" data-start="1683.98" data-end="1685.38" onclick="seekTo(1683.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:03</span></div>
+   <div class="text-content">מגביר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-359" data-start="1685.38" data-end="1689.84" onclick="seekTo(1685.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:05</span></div>
+   <div class="text-content">מהירות ל-90,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-360" data-start="1690.3799999999999" data-end="1694.06" onclick="seekTo(1690.3799999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:10</span></div>
+   <div class="text-content">גובה 60 ואופק קרוב יש שגיבה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-361" data-start="1695.52" data-end="1701.42" onclick="seekTo(1695.52)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:15</span></div>
+   <div class="text-content">מוריד הוצאתו פונה עוד חמש שניות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-362" data-start="1701.42" data-end="1703.52" onclick="seekTo(1701.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:21</span></div>
+   <div class="text-content">מהירות עולה 84</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-363" data-start="1708.48" data-end="1709.7199999999998" onclick="seekTo(1708.48)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:28</span></div>
+   <div class="text-content">נתחיל פנייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-364" data-start="1711.18" data-end="1714.16" onclick="seekTo(1711.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:31</span></div>
+   <div class="text-content">הטייה 20, מתקן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-365" data-start="1715.0800000000002" data-end="1716.46" onclick="seekTo(1715.0800000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:35</span></div>
+   <div class="text-content">מהירות 88,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-366" data-start="1717.46" data-end="1720.4" onclick="seekTo(1717.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:37</span></div>
+   <div class="text-content">גובה 120, את תיקן אותו לקראת הסוף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-367" data-start="1721.7600000000002" data-end="1723.36" onclick="seekTo(1721.7600000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:41</span></div>
+   <div class="text-content">מוסיף לתטעייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-368" data-start="1724.3200000000002" data-end="1725.98" onclick="seekTo(1724.3200000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:44</span></div>
+   <div class="text-content">רוצה כיוון 1-80</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-369" data-start="1731.68" data-end="1732.78" onclick="seekTo(1731.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:51</span></div>
+   <div class="text-content">שופט עציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-370" data-start="1735.18" data-end="1738.32" onclick="seekTo(1735.18)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:55</span></div>
+   <div class="text-content">מועצת העש, מהירות כיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-371" data-start="1739.6200000000001" data-end="1740.48" onclick="seekTo(1739.6200000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>28:59</span></div>
+   <div class="text-content">דרום</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-372" data-start="1750.34" data-end="1751.74" onclick="seekTo(1750.34)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>29:10</span></div>
+   <div class="text-content">נתוני</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-373" data-start="1751.74" data-end="1753.14" onclick="seekTo(1751.74)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>29:11</span></div>
+   <div class="text-content">סוף.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-374" data-start="1756.8" data-end="1762.6" onclick="seekTo(1756.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>29:16</span></div>
+   <div class="text-content">מהירות 83, כיוון 183 וגובה 90. אלו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-375" data-start="1763.86" data-end="1768.0" onclick="seekTo(1763.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>29:23</span></div>
+   <div class="text-content">הנתוני הסוף הולך לבקור</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-376" data-start="1770.48" data-end="1780.16" onclick="seekTo(1770.48)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>29:30</span></div>
+   <div class="text-content">אני רוצה רגע לחדר רק נקודה אחת. העבר צריך להיות בכיוון, כיוון דרום צריך להיות ללא שבש ברגל, בסדר? כן, אני יכול להתחזיר את זה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-377" data-start="1780.52" data-end="1784.36" onclick="seekTo(1780.52)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>29:40</span></div>
+   <div class="text-content">בסדר? לא חוכמה להכניס רגל ולהביט על הכיוון המצפני הזה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-378" data-start="1784.54" data-end="1791.72" onclick="seekTo(1784.54)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>29:44</span></div>
+   <div class="text-content">זו לא כוונת התרגיל, רק שיהיה בינינו אישור קו. בסדר? כן. אז אם כך, איזה כיוון עברת בלי הרגל, להערכתך?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-379" data-start="1791.88" data-end="1796.92" onclick="seekTo(1791.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>29:51</span></div>
+   <div class="text-content">בלי הרגל עברתי לכיוון 1 לש 0. זה 20 מעלות.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-380" data-start="1796.92" data-end="1803.84" onclick="seekTo(1796.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>29:56</span></div>
+   <div class="text-content">הנקודה העיקרית זה שהשלמתי את הציר ב-1.80 וניסיתי להתיישב לכיוון הציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-381" data-start="1811.94" data-end="1815.6" onclick="seekTo(1811.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:11</span></div>
+   <div class="text-content">אז הנקודה הבאה היא לביטחון הבא,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-382" data-start="1816.3999999999999" data-end="1817.44" onclick="seekTo(1816.3999999999999)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:16</span></div>
+   <div class="text-content">להעביד קו הבא</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-383" data-start="1818.42" data-end="1820.62" onclick="seekTo(1818.42)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>30:18</span></div>
+   <div class="text-content">ב-2.40 אני רוצה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-384" data-start="1820.62" data-end="1823.46" onclick="seekTo(1820.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:20</span></div>
+   <div class="text-content">שתיכנס 2.4 קיבלתי בסדר?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-385" data-start="1823.72" data-end="1824.04" onclick="seekTo(1823.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:23</span></div>
+   <div class="text-content">כן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-386" data-start="1824.04" data-end="1828.74" onclick="seekTo(1824.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:24</span></div>
+   <div class="text-content">כן, 24-0 משליף כיוון זה בערך עם הנחל הזה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-387" data-start="1830.44" data-end="1844.94" onclick="seekTo(1830.44)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:30</span></div>
+   <div class="text-content">פותח מרחק מהאובייקט והנקודה לתפקיד עכשיו יש לי השלכת כיוון אבל אני פה לפי המצפן לא לפי הציר או מה שיש לכם.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-388" data-start="1845.4" data-end="1847.84" onclick="seekTo(1845.4)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>30:45</span></div>
+   <div class="text-content">240 90 קשר 60 רגע</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-389" data-start="1848.06" data-end="1853.2" onclick="seekTo(1848.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:48</span></div>
+   <div class="text-content">90 קשר 60 רגע ו240 מנמיך גובה מאוד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-390" data-start="1853.2" data-end="1857.1" onclick="seekTo(1853.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:53</span></div>
+   <div class="text-content">גבוהה מרימה אף, תחיל פניה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-391" data-start="1858.46" data-end="1860.26" onclick="seekTo(1858.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>30:58</span></div>
+   <div class="text-content">גובה גבוה מנמיך</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-392" data-start="1862.0" data-end="1864.1" onclick="seekTo(1862.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:02</span></div>
+   <div class="text-content">ומרים אף מהירות גבוהה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-393" data-start="1865.1799999999998" data-end="1869.24" onclick="seekTo(1865.1799999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:05</span></div>
+   <div class="text-content">מהירות יורדת – הגובה יורד קשר עין עם האופקטי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-394" data-start="1870.6" data-end="1871.42" onclick="seekTo(1870.6)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:10</span></div>
+   <div class="text-content">מהירות 90</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-395" data-start="1874.86" data-end="1877.78" onclick="seekTo(1874.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:14</span></div>
+   <div class="text-content">מוריד סופר אף, קשר עין.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-396" data-start="1879.34" data-end="1885.34" onclick="seekTo(1879.34)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:19</span></div>
+   <div class="text-content">כרגע אני ב-0.5 אפס כלומר פנייה של 180 מעלות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-397" data-start="1886.42" data-end="1891.68" onclick="seekTo(1886.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:26</span></div>
+   <div class="text-content">ממשיך לטוס ישר עוד 10 שניות ולאחר מכן נבצה את הפניה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-398" data-start="1893.36" data-end="1894.48" onclick="seekTo(1893.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:33</span></div>
+   <div class="text-content">פותח את השמאלה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-399" data-start="1895.72" data-end="1897.1" onclick="seekTo(1895.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:35</span></div>
+   <div class="text-content">מוריד האף מאוד נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-400" data-start="1897.1" data-end="1899.8" onclick="seekTo(1897.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:37</span></div>
+   <div class="text-content">גובה 100</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-401" data-start="1902.03" data-end="1903.08" onclick="seekTo(1902.03)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:42</span></div>
+   <div class="text-content">מהירות 85</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-402" data-start="1906.4299999999998" data-end="1907.46" onclick="seekTo(1906.4299999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:46</span></div>
+   <div class="text-content">מועצת תו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-403" data-start="1909.1000000000001" data-end="1911.0" onclick="seekTo(1909.1000000000001)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:49</span></div>
+   <div class="text-content">מתחיל בנייה,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-404" data-start="1912.03" data-end="1915.4" onclick="seekTo(1912.03)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:52</span></div>
+   <div class="text-content">הטייה 30. גובה עולה, מוריד ה&#x27;.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-405" data-start="1915.4" data-end="1916.44" onclick="seekTo(1915.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:55</span></div>
+   <div class="text-content">נוסיף הטייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-406" data-start="1918.4499999999998" data-end="1919.12" onclick="seekTo(1918.4499999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>31:58</span></div>
+   <div class="text-content">כיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-407" data-start="1921.9499999999998" data-end="1922.62" onclick="seekTo(1921.9499999999998)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:01</span></div>
+   <div class="text-content">240</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-408" data-start="1922.62" data-end="1923.08" onclick="seekTo(1922.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:02</span></div>
+   <div class="text-content">אפס</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-409" data-start="1925.62" data-end="1926.58" onclick="seekTo(1925.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:05</span></div>
+   <div class="text-content">מוסיף כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-410" data-start="1927.2" data-end="1930.08" onclick="seekTo(1927.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:07</span></div>
+   <div class="text-content">כעיל לטבעון 231, מכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-411" data-start="1930.86" data-end="1931.86" onclick="seekTo(1930.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:10</span></div>
+   <div class="text-content">מנצחי התיקון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-412" data-start="1955.08" data-end="1961.72" onclick="seekTo(1955.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:35</span></div>
+   <div class="text-content">אוקיי, 190 גובה מעשרים וחמש כיוון 246. זה הנתונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-413" data-start="1965.04" data-end="1969.44" onclick="seekTo(1965.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:45</span></div>
+   <div class="text-content">מתחקר, למשל התרגיל הבא שלי זה ההצנת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-414" data-start="1969.71" data-end="1972.38" onclick="seekTo(1969.71)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:49</span></div>
+   <div class="text-content">במשל הזמנים יש לי שמונה דקות כדי להתחיל אותו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-415" data-start="1972.38" data-end="1977.14" onclick="seekTo(1972.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>32:52</span></div>
+   <div class="text-content">אני חושב על תחקיר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-416" data-start="1985.64" data-end="2009.6" onclick="seekTo(1985.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>33:05</span></div>
+   <div class="text-content">ההצעה להטוס 190, גובה 60. מבחינת התחקיר מה היה אחרי הפנייה פניתי והתחלתי לבצע תיקונים חדים לקראת הסוף.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-417" data-start="2010.04" data-end="2013.9" onclick="seekTo(2010.04)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>33:30</span></div>
+   <div class="text-content">עם פחת נתונים בכיוון, לא הגעתי ביעד האינדרש.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-418" data-start="2014.0" data-end="2018.28" onclick="seekTo(2014.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>33:34</span></div>
+   <div class="text-content">הגעתי בפלוס שש מעלות ועם פחת הנתונים הייתי גבוה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-419" data-start="2019.36" data-end="2029.12" onclick="seekTo(2019.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>33:39</span></div>
+   <div class="text-content">נקודה לפעם הבאה היא להתחיל לעשות את התיקון כבר בסוף הפנייה ולא לקראת האובייקט.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-420" data-start="2030.32" data-end="2036.48" onclick="seekTo(2030.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>33:50</span></div>
+   <div class="text-content">זה מה שאם היה לי קצת יותר זמן יכולתי להתיישב צפצפה עד כשר העין נעימה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-421" data-start="2036.78" data-end="2037.42" onclick="seekTo(2036.78)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>33:56</span></div>
+   <div class="text-content">אוקיי</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-422" data-start="2038.18" data-end="2040.36" onclick="seekTo(2038.18)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>33:58</span></div>
+   <div class="text-content">שמעת גם לפני זה את הצפצפה העליונה?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-423" data-start="2040.84" data-end="2042.22" onclick="seekTo(2040.84)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:00</span></div>
+   <div class="text-content">לא שמתי להודעה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-424" data-start="2042.7" data-end="2044.22" onclick="seekTo(2042.7)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:02</span></div>
+   <div class="text-content">אוקיי, בסדר.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-425" data-start="2044.52" data-end="2047.62" onclick="seekTo(2044.52)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:04</span></div>
+   <div class="text-content">לפני התוצפה התחרונה יש גם צפה עליונה וגם אליה אתה צריך</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-426" data-start="2048.32" data-end="2049.76" onclick="seekTo(2048.32)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:08</span></div>
+   <div class="text-content">להתייחס, בסדר? כן.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-427" data-start="2051.4300000000003" data-end="2054.82" onclick="seekTo(2051.4300000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:11</span></div>
+   <div class="text-content">אני מנמיך, רוצה לזהות את הנקודה של ההצלחה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-428" data-start="2056.58" data-end="2059.94" onclick="seekTo(2056.58)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:16</span></div>
+   <div class="text-content">אז רק לא שמעתי... התחקיר אמר שעברת גבוה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-429" data-start="2060.59" data-end="2062.08" onclick="seekTo(2060.59)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:20</span></div>
+   <div class="text-content">ואתה צריך בעצם לעשות את</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-430" data-start="2063.96" data-end="2066.24" onclick="seekTo(2063.96)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:23</span></div>
+   <div class="text-content">הסידור נתונים בשלב יותר מוקדם בסופו של דבר.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-431" data-start="2066.24" data-end="2067.74" onclick="seekTo(2066.24)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:26</span></div>
+   <div class="text-content">כן, נכון. זאת הנקודה?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-432" data-start="2067.9" data-end="2068.98" onclick="seekTo(2067.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:27</span></div>
+   <div class="text-content">זו אותה נקודה שלך.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-433" data-start="2069.18" data-end="2072.02" onclick="seekTo(2069.18)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>34:29</span></div>
+   <div class="text-content">אוקיי, בסדר?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-434" data-start="2077.06" data-end="2078.46" onclick="seekTo(2077.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:37</span></div>
+   <div class="text-content">מאוד דמעה קצת מעלה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-435" data-start="2080.38" data-end="2081.28" onclick="seekTo(2080.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:40</span></div>
+   <div class="text-content">מוריד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-436" data-start="2081.8199999999997" data-end="2082.96" onclick="seekTo(2081.8199999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:41</span></div>
+   <div class="text-content">רוצה להנמיך בגובה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-437" data-start="2086.0" data-end="2088.98" onclick="seekTo(2086.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:46</span></div>
+   <div class="text-content">מזה את הנקודה של הבנייה של ה-180</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-438" data-start="2093.0" data-end="2094.38" onclick="seekTo(2093.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:53</span></div>
+   <div class="text-content">לשים לב לגבול אזור</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-439" data-start="2094.38" data-end="2099.18" onclick="seekTo(2094.38)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>34:54</span></div>
+   <div class="text-content">אני רוצה לזהות את הנקודה בשאלתך.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-440" data-start="2103.7799999999997" data-end="2105.46" onclick="seekTo(2103.7799999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:03</span></div>
+   <div class="text-content">נתחיל הזמנים של חמש דקות,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-441" data-start="2105.48" data-end="2107.52" onclick="seekTo(2105.48)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:05</span></div>
+   <div class="text-content">ואני רוצה לחלוק מעליה ואז להתארגן טוב.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-442" data-start="2110.0800000000004" data-end="2112.22" onclick="seekTo(2110.0800000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:10</span></div>
+   <div class="text-content">התפנות מוסיף הטייל עוד בגובה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-443" data-start="2112.36" data-end="2113.28" onclick="seekTo(2112.36)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:12</span></div>
+   <div class="text-content">מהירות 90</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-444" data-start="2119.5800000000004" data-end="2120.88" onclick="seekTo(2119.5800000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:19</span></div>
+   <div class="text-content">גובה יורד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-445" data-start="2125.62" data-end="2127.24" onclick="seekTo(2125.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:25</span></div>
+   <div class="text-content">מהירות 87</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-446" data-start="2130.82" data-end="2131.76" onclick="seekTo(2130.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:30</span></div>
+   <div class="text-content">מהירות שואלת,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-447" data-start="2131.82" data-end="2132.48" onclick="seekTo(2131.82)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:31</span></div>
+   <div class="text-content">מועדה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-448" data-start="2141.4" data-end="2148.6" onclick="seekTo(2141.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:41</span></div>
+   <div class="text-content">אוקיי זה האובייקט של הפניה רוצה להתיישר איתו לכיוון הנחל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-449" data-start="2148.96" data-end="2150.82" onclick="seekTo(2148.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:48</span></div>
+   <div class="text-content">ושם נמצא את ההתארגנות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-450" data-start="2152.1800000000003" data-end="2156.06" onclick="seekTo(2152.1800000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>35:52</span></div>
+   <div class="text-content">גובה עולה, מוסיף הטייה. מהירות מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-451" data-start="2162.2000000000003" data-end="2164.66" onclick="seekTo(2162.2000000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:02</span></div>
+   <div class="text-content">שם כיוון זה את השביל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-452" data-start="2165.5" data-end="2166.1" onclick="seekTo(2165.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:05</span></div>
+   <div class="text-content">שאיתו</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-453" data-start="2166.3" data-end="2167.38" onclick="seekTo(2166.3)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>36:06</span></div>
+   <div class="text-content">אני אטוס</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-454" data-start="2167.76" data-end="2169.0" onclick="seekTo(2167.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:07</span></div>
+   <div class="text-content">את הנחלים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-455" data-start="2170.34" data-end="2170.98" onclick="seekTo(2170.34)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:10</span></div>
+   <div class="text-content">מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-456" data-start="2171.1600000000003" data-end="2171.76" onclick="seekTo(2171.1600000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:11</span></div>
+   <div class="text-content">נמצא</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-457" data-start="2179.42" data-end="2184.94" onclick="seekTo(2179.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:19</span></div>
+   <div class="text-content">וזה נקודת ההתחלה עכשיו אני מעליה, פותח שמאלה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-458" data-start="2188.12" data-end="2192.2400000000002" onclick="seekTo(2188.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:28</span></div>
+   <div class="text-content">גובה 100 מהירות 80 רועי הגבעה אופק הרוב</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-459" data-start="2194.16" data-end="2196.54" onclick="seekTo(2194.16)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>36:34</span></div>
+   <div class="text-content">ברגע שאתה נכנס תאגיד נכנס</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-460" data-start="2197.68" data-end="2199.22" onclick="seekTo(2197.68)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>36:37</span></div>
+   <div class="text-content">בסדר? קיבלתי</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-461" data-start="2199.9" data-end="2200.68" onclick="seekTo(2199.9)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>36:39</span></div>
+   <div class="text-content">מאה אחוז</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-462" data-start="2200.68" data-end="2202.9" onclick="seekTo(2200.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:40</span></div>
+   <div class="text-content">מזהה את הבניינים בהורג החוק.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-463" data-start="2203.7999999999997" data-end="2207.3" onclick="seekTo(2203.7999999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>36:43</span></div>
+   <div class="text-content">נציג בניה לשמאלה, מוריד דף מאות ירידת</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-464" data-start="2232.88" data-end="2233.92" onclick="seekTo(2232.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:12</span></div>
+   <div class="text-content">נכנס,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-465" data-start="2235.12" data-end="2236.54" onclick="seekTo(2235.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:15</span></div>
+   <div class="text-content">מגביר מהירות ל-90,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-466" data-start="2237.66" data-end="2239.56" onclick="seekTo(2237.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:17</span></div>
+   <div class="text-content">מנמיך גובה ומכניס רגל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-467" data-start="2240.08" data-end="2242.02" onclick="seekTo(2240.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:20</span></div>
+   <div class="text-content">אוכל לעשות בנייה מיטבית</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-468" data-start="2242.76" data-end="2243.64" onclick="seekTo(2242.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:22</span></div>
+   <div class="text-content">מוריד אף,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-469" data-start="2244.32" data-end="2245.36" onclick="seekTo(2244.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:24</span></div>
+   <div class="text-content">מהירות 87,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-470" data-start="2247.92" data-end="2250.58" onclick="seekTo(2247.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:27</span></div>
+   <div class="text-content">גובה 100 כיוון 188</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-471" data-start="2251.9" data-end="2254.14" onclick="seekTo(2251.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:31</span></div>
+   <div class="text-content">מתחיל הוסיף הטעייה כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-472" data-start="2254.62" data-end="2255.48" onclick="seekTo(2254.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:34</span></div>
+   <div class="text-content">כוח ל-70.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-473" data-start="2256.34" data-end="2257.18" onclick="seekTo(2256.34)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:36</span></div>
+   <div class="text-content">שומע הטיה?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-474" data-start="2257.3" data-end="2258.66" onclick="seekTo(2257.3)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:37</span></div>
+   <div class="text-content">הטיה 30 מעלות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-475" data-start="2262.54" data-end="2266.94" onclick="seekTo(2262.54)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:42</span></div>
+   <div class="text-content">אה, מאיר הוא 90, מכניס רגל ופסוק למתואר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-476" data-start="2269.22" data-end="2272.14" onclick="seekTo(2269.22)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:49</span></div>
+   <div class="text-content">ההטיה גדלה מתקן רוצה כיוון</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-477" data-start="2273.32" data-end="2274.22" onclick="seekTo(2273.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:53</span></div>
+   <div class="text-content">0.08</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-478" data-start="2275.7999999999997" data-end="2276.5" onclick="seekTo(2275.7999999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:55</span></div>
+   <div class="text-content">הגובה עולה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-479" data-start="2276.7799999999997" data-end="2278.54" onclick="seekTo(2276.7799999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>37:56</span></div>
+   <div class="text-content">גובה עלה מאוד מנמיכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-480" data-start="2286.7" data-end="2291.08" onclick="seekTo(2286.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:06</span></div>
+   <div class="text-content">לכיוון 3.25, גובה 1 שווה 0 מהירות 105</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-481" data-start="2292.68" data-end="2297.26" onclick="seekTo(2292.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:12</span></div>
+   <div class="text-content">לשים לב לעלייה בגובה, הוספתי כוח לא תיקנתי את ההטייה בהתאם</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-482" data-start="2298.1" data-end="2304.42" onclick="seekTo(2298.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:18</span></div>
+   <div class="text-content">נשים לזה לב, מזהה את הפלוס בשמיניה מתקן מהירות ל-90 מוריד גובה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-483" data-start="2307.2799999999997" data-end="2308.08" onclick="seekTo(2307.2799999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:27</span></div>
+   <div class="text-content">השופט</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-484" data-start="2309.78" data-end="2311.78" onclick="seekTo(2309.78)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:29</span></div>
+   <div class="text-content">לכיוון נקודת ההתחלה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-485" data-start="2313.44" data-end="2316.46" onclick="seekTo(2313.44)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:33</span></div>
+   <div class="text-content">רואה את האובייקט של השמינייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-486" data-start="2318.06" data-end="2320.2" onclick="seekTo(2318.06)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:38</span></div>
+   <div class="text-content">מוריד אח מגביר מהירות</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-487" data-start="2320.88" data-end="2321.82" onclick="seekTo(2320.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:40</span></div>
+   <div class="text-content">מוריד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-488" data-start="2323.02" data-end="2324.4" onclick="seekTo(2323.02)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:43</span></div>
+   <div class="text-content">עושים אותה עם הציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-489" data-start="2328.66" data-end="2332.58" onclick="seekTo(2328.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:48</span></div>
+   <div class="text-content">מהירות גבוהה, ברימה מתחיל ימינה מהירות 100</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-490" data-start="2333.0" data-end="2337.74" onclick="seekTo(2333.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:53</span></div>
+   <div class="text-content">וגובה 175. רוצה להוסיף הטייה? לרדת בגובה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-491" data-start="2338.64" data-end="2340.12" onclick="seekTo(2338.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>38:58</span></div>
+   <div class="text-content">מכניס רגל לתאם.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-492" data-start="2341.2799999999997" data-end="2344.52" onclick="seekTo(2341.2799999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:01</span></div>
+   <div class="text-content">החלק הישון צריך להיות יותר חד בגלל הרוח.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-493" data-start="2347.8199999999997" data-end="2350.26" onclick="seekTo(2347.8199999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:07</span></div>
+   <div class="text-content">מהירות יורדת, מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-494" data-start="2351.2" data-end="2352.14" onclick="seekTo(2351.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:11</span></div>
+   <div class="text-content">מוציא קצת הטיה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-495" data-start="2353.24" data-end="2354.44" onclick="seekTo(2353.24)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:13</span></div>
+   <div class="text-content">שופט לציר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-496" data-start="2356.66" data-end="2358.16" onclick="seekTo(2356.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:16</span></div>
+   <div class="text-content">מוריד אף, מהירות נמוכה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-497" data-start="2359.8399999999997" data-end="2364.3" onclick="seekTo(2359.8399999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:19</span></div>
+   <div class="text-content">רוצה לחזור באותו כיוון עם הציר, שופט לציר</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-498" data-start="2364.3" data-end="2365.96" onclick="seekTo(2364.3)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>39:24</span></div>
+   <div class="text-content">הטעיה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-499" data-start="2365.96" data-end="2368.46" onclick="seekTo(2365.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:25</span></div>
+   <div class="text-content">נמוכה השופט מוסיף הטעייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-500" data-start="2372.6" data-end="2373.8" onclick="seekTo(2372.6)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:32</span></div>
+   <div class="text-content">הוציא הטעייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-501" data-start="2375.0" data-end="2376.14" onclick="seekTo(2375.0)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:35</span></div>
+   <div class="text-content">מהירותך, מוריד אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-502" data-start="2378.72" data-end="2383.68" onclick="seekTo(2378.72)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:38</span></div>
+   <div class="text-content">מהירות 72 גובה 120 כיוון 155 מתחיל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-503" data-start="2383.94" data-end="2386.88" onclick="seekTo(2383.94)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:43</span></div>
+   <div class="text-content">מניעה שמאלה, מוריד אף מוסיף כוח.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-504" data-start="2386.88" data-end="2387.64" onclick="seekTo(2386.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:46</span></div>
+   <div class="text-content">כוח נמוך</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-505" data-start="2388.3" data-end="2392.76" onclick="seekTo(2388.3)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:48</span></div>
+   <div class="text-content">רוצאת הטעיה חריפה יותר בהתחלה ופחות חריפה בסוף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-506" data-start="2392.76" data-end="2397.62" onclick="seekTo(2392.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:52</span></div>
+   <div class="text-content">כיוון, רוצה לשמוע. 155 מוציא הטייה תנאים אף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-507" data-start="2398.48" data-end="2398.98" onclick="seekTo(2398.48)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>39:58</span></div>
+   <div class="text-content">מוריד</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-508" data-start="2419.02" data-end="2420.24" onclick="seekTo(2419.02)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:19</span></div>
+   <div class="text-content">מהירות קטנה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-509" data-start="2421.22" data-end="2424.44" onclick="seekTo(2421.22)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:21</span></div>
+   <div class="text-content">רוצה לעבור מעל האובייקט, אבל לא בכיוון הנכון.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-510" data-start="2426.9199999999996" data-end="2433.22" onclick="seekTo(2426.9199999999996)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:26</span></div>
+   <div class="text-content">כיוון 165 מאירות 55 גובה 100 ממשיך אל הנחל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-511" data-start="2435.68" data-end="2436.44" onclick="seekTo(2435.68)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:35</span></div>
+   <div class="text-content">לינפ</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-512" data-start="2438.2" data-end="2440.7" onclick="seekTo(2438.2)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>40:38</span></div>
+   <div class="text-content">נעבור את הכיוון דרום ב-80 קשר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-513" data-start="2440.7" data-end="2443.1" onclick="seekTo(2440.7)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:40</span></div>
+   <div class="text-content">לכיוון דרום ב-80 קשר מוריד עכשיו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-514" data-start="2443.62" data-end="2445.62" onclick="seekTo(2443.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:43</span></div>
+   <div class="text-content">מזהה את הנקודה שהיא אוטובוס</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-515" data-start="2448.3199999999997" data-end="2449.04" onclick="seekTo(2448.3199999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:48</span></div>
+   <div class="text-content">מכניס רגל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-516" data-start="2449.42" data-end="2451.14" onclick="seekTo(2449.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:49</span></div>
+   <div class="text-content">כיוון דרום, משיפות שבעונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-517" data-start="2453.5" data-end="2454.38" onclick="seekTo(2453.5)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:53</span></div>
+   <div class="text-content">80 קשר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-518" data-start="2458.8" data-end="2459.84" onclick="seekTo(2458.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>40:58</span></div>
+   <div class="text-content">מבצע פנייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-519" data-start="2461.66" data-end="2463.34" onclick="seekTo(2461.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:01</span></div>
+   <div class="text-content">בניית-שיפוט מוסיף כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-520" data-start="2469.28" data-end="2471.06" onclick="seekTo(2469.28)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:09</span></div>
+   <div class="text-content">גובה עולה הוסיף הטייה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-521" data-start="2472.54" data-end="2473.62" onclick="seekTo(2472.54)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:12</span></div>
+   <div class="text-content">ומזהה את האוטורוטציה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-522" data-start="2474.14" data-end="2475.38" onclick="seekTo(2474.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:14</span></div>
+   <div class="text-content">מענמיך לכיוונו</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-523" data-start="2480.14" data-end="2483.3" onclick="seekTo(2480.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:20</span></div>
+   <div class="text-content">רוצה לבצע פנייה נוספת ולהתארגן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-524" data-start="2484.08" data-end="2485.06" onclick="seekTo(2484.08)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:24</span></div>
+   <div class="text-content">בנתונים הנכונים.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-525" data-start="2486.7" data-end="2488.2" onclick="seekTo(2486.7)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>41:26</span></div>
+   <div class="text-content">לא עברתי, לא עברת עוד מעל?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-526" data-start="2488.64" data-end="2489.88" onclick="seekTo(2488.64)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:28</span></div>
+   <div class="text-content">עברתי מעל</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-527" data-start="2492.1" data-end="2492.86" onclick="seekTo(2492.1)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:32</span></div>
+   <div class="text-content">בנתונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-528" data-start="2493.9" data-end="2497.64" onclick="seekTo(2493.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:33</span></div>
+   <div class="text-content">2 3 0 מהירות 70</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-529" data-start="2498.62" data-end="2501.64" onclick="seekTo(2498.62)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:38</span></div>
+   <div class="text-content">וגובה אני לא זוכר אבל נראה לי באזור 250</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-530" data-start="2503.2999999999997" data-end="2504.06" onclick="seekTo(2503.2999999999997)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>41:43</span></div>
+   <div class="text-content">אוקיי</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-531" data-start="2505.0" data-end="2508.46" onclick="seekTo(2505.0)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>41:45</span></div>
+   <div class="text-content">בסדר אתה לא יכול לעבור שום דבר זה אם עברת אז עברת</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-532" data-start="2509.26" data-end="2512.76" onclick="seekTo(2509.26)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>41:49</span></div>
+   <div class="text-content">יש one chance לדבר הזה. אתה יכול לתחקר, אם יש לך זמן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-533" data-start="2512.76" data-end="2513.88" onclick="seekTo(2512.76)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:52</span></div>
+   <div class="text-content">עוד? יש לי זמן</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-534" data-start="2514.98" data-end="2515.54" onclick="seekTo(2514.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:54</span></div>
+   <div class="text-content">לתחקר</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-535" data-start="2517.46" data-end="2518.02" onclick="seekTo(2517.46)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:57</span></div>
+   <div class="text-content">אוקיי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-536" data-start="2518.88" data-end="2524.06" onclick="seekTo(2518.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>41:58</span></div>
+   <div class="text-content">רוצה להגדיר 190 באמצעותיו גובה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-537" data-start="2525.3" data-end="2525.86" onclick="seekTo(2525.3)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>42:05</span></div>
+   <div class="text-content">60</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-538" data-start="2539.3399999999997" data-end="2540.22" onclick="seekTo(2539.3399999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:19</span></div>
+   <div class="text-content">מתייצב,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-539" data-start="2540.42" data-end="2541.38" onclick="seekTo(2540.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:20</span></div>
+   <div class="text-content">מכניס רגל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-540" data-start="2542.98" data-end="2544.12" onclick="seekTo(2542.98)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:22</span></div>
+   <div class="text-content">יש? אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-541" data-start="2545.58" data-end="2546.46" onclick="seekTo(2545.58)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:25</span></div>
+   <div class="text-content">תחקיר.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-542" data-start="2547.88" data-end="2551.22" onclick="seekTo(2547.88)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:27</span></div>
+   <div class="text-content">הנקודה העיקרית של התחקיר זה ההתארגנות.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-543" data-start="2551.44" data-end="2555.0" onclick="seekTo(2551.44)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:31</span></div>
+   <div class="text-content">מלכתחילה באתי לא מאורגן בנתונים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-544" data-start="2555.9" data-end="2563.24" onclick="seekTo(2555.9)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:35</span></div>
+   <div class="text-content">בקצב מאוד מהיר וזה מה שגרר את הכדור-שלג אחרי זה בכל תרגיל.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-545" data-start="2564.2000000000003" data-end="2569.9" onclick="seekTo(2564.2000000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:44</span></div>
+   <div class="text-content">לא הצלחתי לשנות אחרי זה את הנתונים, אחרי הפנייה המיטבית לנתונים טובים יותר על השמינייה.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-546" data-start="2571.2" data-end="2573.6400000000003" onclick="seekTo(2571.2)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:51</span></div>
+   <div class="text-content">זה גם הגרם את השמינייה שהייתה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-547" data-start="2574.26" data-end="2577.68" onclick="seekTo(2574.26)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>42:54</span></div>
+   <div class="text-content">לא בצורה ולא בנתונים.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-548" data-start="2580.86" data-end="2584.5" onclick="seekTo(2580.86)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:00</span></div>
+   <div class="text-content">היינו פגם, לא פתחתי מספיק והייתי מאוד צפוף</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-549" data-start="2586.7200000000003" data-end="2588.16" onclick="seekTo(2586.7200000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:06</span></div>
+   <div class="text-content">לכן עברתי</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-550" data-start="2588.4" data-end="2589.28" onclick="seekTo(2588.4)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:08</span></div>
+   <div class="text-content">לא בכיוון.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-551" data-start="2589.8" data-end="2593.76" onclick="seekTo(2589.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:09</span></div>
+   <div class="text-content">והנקודה שדיברנו בתהליך של הלא לתקן,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-552" data-start="2594.3300000000004" data-end="2600.36" onclick="seekTo(2594.3300000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:14</span></div>
+   <div class="text-content">אז תיקנתי ממש לקראת הסוף וזה גרר התבדלות של הנתונים.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-553" data-start="2600.7900000000004" data-end="2601.64" onclick="seekTo(2600.7900000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:20</span></div>
+   <div class="text-content">זו הנקודה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-554" data-start="2602.14" data-end="2602.9" onclick="seekTo(2602.14)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>43:22</span></div>
+   <div class="text-content">אוקיי.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-555" data-start="2603.32" data-end="2618.34" onclick="seekTo(2603.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:23</span></div>
+   <div class="text-content">אבל הנקודה העיקרית זה ההתארגנות מזוהה חוטים באופן רחוק רוצה לשימה לכיוון דרום לקראת עזיבת האזור מוריד כוח ל-65 נסיקה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-556" data-start="2619.3399999999997" data-end="2620.2" onclick="seekTo(2619.3399999999997)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:39</span></div>
+   <div class="text-content">מתשע,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-557" data-start="2621.09" data-end="2623.64" onclick="seekTo(2621.09)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:41</span></div>
+   <div class="text-content">באמצע תא רוצה מהירות שבעים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-558" data-start="2626.42" data-end="2627.0" onclick="seekTo(2626.42)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:46</span></div>
+   <div class="text-content">מהירות קטנה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-559" data-start="2635.9100000000003" data-end="2637.96" onclick="seekTo(2635.9100000000003)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>43:55</span></div>
+   <div class="text-content">מהירות שמונים וקטנה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-560" data-start="2644.12" data-end="2648.0" onclick="seekTo(2644.12)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>44:04</span></div>
+   <div class="text-content">מהירות 70 ויורדת מועדה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-561" data-start="2667.96" data-end="2668.94" onclick="seekTo(2667.96)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>44:27</span></div>
+   <div class="text-content">נעים סודריים.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-562" data-start="2670.14" data-end="2671.38" onclick="seekTo(2670.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>44:30</span></div>
+   <div class="text-content">יוצא בעתונים,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-563" data-start="2674.5800000000004" data-end="2678.28" onclick="seekTo(2674.5800000000004)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>44:34</span></div>
+   <div class="text-content">מזדהה באזור מסוימת התוכחה ש״ס לכיוון</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-564" data-start="2678.28" data-end="2684.92" onclick="seekTo(2678.28)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>44:38</span></div>
+   <div class="text-content">אשל רוקס סיים</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-565" data-start="2684.92" data-end="2688.0" onclick="seekTo(2684.92)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>44:44</span></div>
+   <div class="text-content">תרגול באזור ליציאה מהאזור</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-566" data-start="2700.26" data-end="2702.54" onclick="seekTo(2700.26)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:00</span></div>
+   <div class="text-content">יש הרבה אלף חמש מאות לגלעד שירוקו.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-567" data-start="2703.63" data-end="2708.68" onclick="seekTo(2703.63)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:03</span></div>
+   <div class="text-content">אוקיי, אז אני רוצה קצת להנמיך מזדה על גלעד ושטיפרח.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-568" data-start="2734.32" data-end="2736.14" onclick="seekTo(2734.32)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:34</span></div>
+   <div class="text-content">מזהה את ביתך, מזהה את גלעד.</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-569" data-start="2739.2400000000002" data-end="2740.84" onclick="seekTo(2739.2400000000002)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:39</span></div>
+   <div class="text-content">נמצא ת&#x27; מאוד גבוה</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-570" data-start="2743.8" data-end="2744.94" onclick="seekTo(2743.8)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:43</span></div>
+   <div class="text-content">ומועד כוח</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-571" data-start="2758.16" data-end="2760.06" onclick="seekTo(2758.16)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>45:58</span></div>
+   <div class="text-content">190, פרופ&#x27; מיועד</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-572" data-start="2765.64" data-end="2768.48" onclick="seekTo(2765.64)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>46:05</span></div>
+   <div class="text-content">אתה נותן את הדיווח ונסיים בסדר?</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-573" data-start="2768.66" data-end="2769.98" onclick="seekTo(2768.66)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>46:08</span></div>
+   <div class="text-content">שלו גלעד 1500</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-574" data-start="2778.34" data-end="2779.3" onclick="seekTo(2778.34)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>46:18</span></div>
+   <div class="text-content">אוקיי בוא נסיים</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-575" data-start="2780.48" data-end="2780.9" onclick="seekTo(2780.48)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>46:20</span></div>
+   <div class="text-content">תודה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-576" data-start="2815.04" data-end="2817.94" onclick="seekTo(2815.04)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>46:55</span></div>
+   <div class="text-content">אדוני היושב-ראש, חברי הכנסת,</div>
+  </div>
+  <div class="segment-block speaker-1" id="seg-577" data-start="2824.14" data-end="2825.72" onclick="seekTo(2824.14)">
+   <div class="meta-info"><span class="speaker-name">חניך</span><span>47:04</span></div>
+   <div class="text-content">‫איך אני מדליק את הטיימר?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-578" data-start="2826.88" data-end="2828.14" onclick="seekTo(2826.88)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:06</span></div>
+   <div class="text-content">‫אני אתעסק על זה.</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-579" data-start="2829.26" data-end="2829.84" onclick="seekTo(2829.26)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:09</span></div>
+   <div class="text-content">בסדר?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-580" data-start="2830.08" data-end="2832.42" onclick="seekTo(2830.08)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:10</span></div>
+   <div class="text-content">כן, אחלה</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-581" data-start="2849.8799999999997" data-end="2856.92" onclick="seekTo(2849.8799999999997)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:29</span></div>
+   <div class="text-content">350-300, דלק יש לנו 400 קילו אני רואה, 402. שומעת אילן?</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-582" data-start="2858.7999999999997" data-end="2859.2" onclick="seekTo(2858.7999999999997)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:38</span></div>
+   <div class="text-content">כן</div>
+  </div>
+  <div class="segment-block speaker-2" id="seg-583" data-start="2860.58" data-end="2862.2" onclick="seekTo(2860.58)">
+   <div class="meta-info"><span class="speaker-name">ממיין</span><span>47:40</span></div>
+   <div class="text-content">נראה לי שאנחנו יכולים להתחיל</div>
+  </div>
+ </div></div>
+</div>
+<script>
+ const player = document.getElementById('audioPlayer');
+ const blocks = document.querySelectorAll('.segment-block');
+ function seekTo(s) { player.currentTime = s; player.play(); }
+ player.addEventListener('timeupdate', () => {
+   const t = player.currentTime;
+   blocks.forEach((b) => {
+     const s = parseFloat(b.dataset.start), e = parseFloat(b.dataset.end);
+     if (t >= s && t <= e && !b.classList.contains('active')) {
+       blocks.forEach(x => x.classList.remove('active'));
+       b.classList.add('active');
+       b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+   });
+ });
+</script>
+</body>
+</html>
